@@ -129,6 +129,15 @@ document.addEventListener('DOMContentLoaded', () => {
             taskElement.appendChild(taskExpectTimeElement);
             taskElement.appendChild(taskRemainTimeElement);
             taskElement.appendChild(taskDidTimeElement);
-        }
+        };
     }; 
+    const userName = document.createElement('div');
+    userName.classname = 'user-name';
+    userName.textContent = '田所　浩二';
+
+    const userIcon = document.createElement('img');
+    userIcon.classname = 'user-icon';
+    userIcon.src = 'sampleIcon.jpg'
+    
+    
 });
