@@ -48,19 +48,25 @@
             <div class="peofile">
                 <div class="profile-text">
                     <h2>プロフィール</h2>
-                    <a class="profile-image">
-                        <img src="images/profile-image/demo.png" alt="プロフィール画像">
+                    <a class="user-icon">
+                        <img src="images/profile-image/icon.jpg" alt="プロフィール画像">
                     </a>
-                    <h2>名字名前</h2>
+                    <div id="user-name"></div>
                     <div class="Tasks">
-                        <p>Your Tasks</p>
-                        <ul>
-                            <li>Task1</li>
-                            <li>Task2</li>
-                            <li>Task3</li>
-                        </ul>
-                    </div>
-                    
+                        <h3>固定された課題</h3>
+                        <div id="task-pinned"></div>
+                        <h3>未達成課題</h3>
+                        <ul id="task-list-pre"></ul>
+                        <h3>重要課題</h3>
+                        <div id="task-long"></div>
+                        <h3>緊急課題</h3>
+                        <div id="task-early"></div>
+                        <h3>直近の課題</h3>
+                        <ul id="task-finished-near"></ul>
+                        <h3>過去の課題一覧</h3>
+                        <ul id="task-list-post"></ul>
+                    </div>                    
+                    <script src="js/script.js"></script>
                 </div>
             </div>
         </main>
