@@ -2,12 +2,12 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>タスク管理</title>
-        <meta name="description" content="タスク管理">
+        <title>タスク一覧</title>
+        <meta name="description" content="タスク一覧">
         <meta name="viewport" content="width=device-width">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <link href="css/common.css" rel="stylesheet">
-        <link href="css/taskmanagement.css" rel="stylesheet">
+        <link href="css/task.css" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
@@ -24,9 +24,8 @@
                 <div class="header-site-menu">
                     <nav class="site-menu">
                         <ul>
-                            <li><a href="taskmanagement.html">タスク管理</a></li>
-                            <li><a href="schedule.html">スケジュール</a></li>
-                            <li><a href="progress.html">達成状況</a></li>
+                            <li><a href="task.html">タスク管理</a></li>
+                            <li><a href="profile.html">プロフィール</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -40,14 +39,30 @@
                     <li><a href="#">Home</a></li>
                 </ul>
             </nav>
-            <div class="container">
-                <h1>タスク管理ツール</h1>
+            <div class="first-view">
+                <div class="first-view-text">
+                    <h1>課題一覧</h1>
+                </div>
             </div>
-            <div class="task-input">
-                <input type="text" id="new-task" placeholder="新しいタスクを入力...">
-                <button id="add-task">追加</button>
-                <button id="delete-task">削除</button>
+                <div class="element">
+                    <div>
+                        <ul>
+                            <li>課題名</li>
+                            <li>提出締切日</li>
+                            <li>予想所要時間</li>
+                            <li>完了度</li>
+                        </ul>
+                    </div>
+                </div>
+            <div class="">
+                <ul>
+                    <li><a href="taskprefinish.html">未完了課題一覧</a></li>
+                    <li><a href="taskfinish.html">完了済課題一覧</a></li>
+                </ul>
             </div>
+
+
+            <!---必要要素のみ表示するよう後日変更-->
             <div class="task-list">
                 <h1>タスクリスト</h1>
                 <h2>未完了の課題</h2>
@@ -80,14 +95,10 @@
         <footer class="footer">
             <nav class="site-menu">
                 <ul>
-                    <li><a href="taskmanagement.html">タスク管理</a></li>
-                    <li><a href="schedule.html">スケジュール</a></li>
-                    <li><a href="progress.html">達成状況</a></li>
+                    <li><a href="task.html">タスク管理</a></li>
+                    <li><a href="profile.html">プロフィール</a></li>
                 </ul>
             </nav>
-            <a class="fotter-logo" href="index.html">
-                <img src="images/common/sitelogo.png" alt="ロゴ">
-            </a>
             <p class="copyright"><small>&copy;研究開発リテラシーG18</small></p>
         </footer>
         <!--fotter ここまで-->

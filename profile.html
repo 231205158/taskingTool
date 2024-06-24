@@ -2,15 +2,16 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>TaskingTool</title>
-        <meta name="description" content="TaskingTool">
+        <title>プロフィール</title>
+        <meta name="description" content="プロフィール">
         <meta name="viewport" content="width=device-width">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <link href="css/common.css" rel="stylesheet">
+        <link href="css/profile.css" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
-        <script src="js/script.js"></script>
+        <script src="js/progress.js"></script>
     </head>
     <body>
         <!--header ここから-->
@@ -40,8 +41,16 @@
             </nav>
             <div class="first-view">
                 <div class="first-view-text">
-                    <h1>Task Managing Sites</h1>
-                    <p>効率化されたタスク管理</p>
+                    <!---必要要素のみ表示できるよう後日更新-->
+                    <h2>ユーザー情報</h2>
+                    ユーザー名: <div id="user-name"></div>
+                    <div>アイコン: <img id="user-icon" src="" alt="User Icon"></div>
+                    <h1>達成状況</h1>
+                    <h2>累計</h2>
+                    <p>合計勉強時間：<span id=""></span>分</p>
+                    <p>合計課題完了数：<span id=""></span></p>
+                    <p>未完了課題時間：<span id=""></span>分</p>
+                    <p>未完了課題数：<span id=""></span></p>
                 </div>
             </div>
         </main>
