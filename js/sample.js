@@ -14,9 +14,8 @@
         task-time-did 経過時間
         task-complete-date 完了日
 
-    remain-time 全課題残り時間
     remain-number 全課題残り数
-        
+
     user-name ユーザー名
     user-icon アイコン
     
@@ -28,8 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const finished2Tasks = document.getElementById('task-list-post-near');
     const userName = document.getElementById('user-name');
     const userIcon = document.getElementById('user-icon');
-    const remainTimesAmount = document.getElementById('remain-time');
     const remainTasksAmount = document.getElementById('remain-number');
+    const pinnedTask = document.getElementById('task-pinned');
+    const longTask = document.getElementById('task-long');
+    const earlyTask = document.getElementById('task-early');
     
     // 初期データを設定するなどの処理をここで行う
     var exListPre = [
@@ -43,10 +44,9 @@ document.addEventListener('DOMContentLoaded', () => {
         {'text':'ヤジュミエール', 'limit':'2024/5/14 00:00', 'didTimes':[0, 19], 'editDates':['2024/4/1', '2024/1/9']}];
 
     // 特定のタスクを指定された要素に表示する関数
-    const displayTaskInElement = (task, elementId) => {
-        const taskElement = document.getElementById(elementId);
-        if (taskElement) {
-            taskElement.innerHTML = ''; // 現在の内容をクリア
+    const displayTaskInElement = (task, elementId, constName) => {
+        if (constName) {
+            constName.innerHTML = ''; // 現在の内容をクリア
 
             const taskTextElement = document.createElement('div');
             taskTextElement.className = 'task-text';
@@ -68,11 +68,11 @@ document.addEventListener('DOMContentLoaded', () => {
             taskDidTimeElement.className = 'task-time-did';
             taskDidTimeElement.textContent = String(task.didTimes[task.didTimes.length -1]);
     
-            taskElement.appendChild(taskTextElement);
-            taskElement.appendChild(taskLimitElement);
-            taskElement.appendChild(taskExpectTimeElement);
-            taskElement.appendChild(taskRemainTimeElement);
-            taskElement.appendChild(taskDidTimeElement);
+            constName.appendChild(taskTextElement);
+            constName.appendChild(taskLimitElement);
+            constName.appendChild(taskExpectTimeElement);
+            constName.appendChild(taskRemainTimeElement);
+            constName.appendChild(taskDidTimeElement);
         };
     };
     
@@ -155,12 +155,11 @@ document.addEventListener('DOMContentLoaded', () => {
         finished2Tasks.appendChild(li);
     });
     
-    displayTaskInElement(exListPre[2], 'task-pinned');
-    displayTaskInElement(exListPre[0], 'task-long');
-    displayTaskInElement(exListPre[1], 'task-early');
+    displayTaskInElement(exListPre[2], 'task-pinned', pinnedTask);
+    displayTaskInElement(exListPre[0], 'task-long', longTask);
+    displayTaskInElement(exListPre[1], 'task-early', earlyTask);
 
     userName.textContent = '田所　浩二';
     userIcon.src = 'sampleIcon.jpg';
-    remainTimesAmount.textContent = '4545';
     remainTasksAmount.textContent = '810';
 });
