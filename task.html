@@ -2,11 +2,12 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>TaskingTool</title>
-        <meta name="description" content="TaskingTool">
+        <title>タスク一覧</title>
+        <meta name="description" content="タスク一覧">
         <meta name="viewport" content="width=device-width">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <link href="css/common.css" rel="stylesheet">
+        <link href="css/task.css" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
@@ -40,9 +41,53 @@
             </nav>
             <div class="first-view">
                 <div class="first-view-text">
-                    <h1>Task Managing Sites</h1>
-                    <p>効率化されたタスク管理</p>
+                    <h1>課題一覧</h1>
                 </div>
+            </div>
+                <div class="element">
+                    <div>
+                        <ul>
+                            <li>課題名</li>
+                            <li>提出締切日</li>
+                            <li>予想所要時間</li>
+                            <li>完了度</li>
+                        </ul>
+                    </div>
+                </div>
+            <div class="">
+                <ul>
+                    <li><a href="taskprefinish.html">未完了課題一覧</a></li>
+                    <li><a href="taskfinish.html">完了済課題一覧</a></li>
+                </ul>
+            </div>
+
+
+            <!---必要要素のみ表示するよう後日変更-->
+            <div class="task-list">
+                <h1>タスクリスト</h1>
+                <h2>未完了の課題</h2>
+                <ul id="task-list-pre"></ul>                    <h2>完了済みの課題</h2>
+                <ul id="task-list-post"></ul>
+    
+                <h2>完了済みの課題（最新二つ）</h2>
+                <ul id="task-list-post-near"></ul>
+    
+                <h2>ピン止めされた課題</h2>
+                <div id="task-pinned"></div>
+    
+                <h2>一番時間のかかる課題</h2>
+                <div id="task-long"></div>
+    
+                <h2>一番締め切りが早い課題</h2>
+                <div id="task-early"></div>
+    
+                <h2>ユーザー情報</h2>
+                ユーザー名: <div id="user-name"></div>
+                <div>アイコン: <img id="user-icon" src="" alt="User Icon"></div>
+    
+                <h2>残り時間と課題数</h2>
+                <div id="remain-time">残り時間: </div>
+                <div id="remain-number">残りの課題数: </div>
             </div>
         </main>
         <!--main ここまで-->

@@ -2,8 +2,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>TaskingTool</title>
-        <meta name="description" content="TaskingTool">
+        <title>TaskingTool-Home</title>
+        <meta name="description" content="TaskingTool-Home">
         <meta name="viewport" content="width=device-width">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
         <link href="css/index.css" rel="stylesheet">
@@ -17,15 +17,14 @@
         <header class="header">
             <div class="header-inner">
                 <a class="header-logo" href="index.html">
-                    <img src="images/common/logo.png" alt="ロゴ">
+                    <img src="images/common/sitelogo.png" alt="ロゴ">
                 </a>
                 <button class="toggle-menu-button"></button>
                 <div class="header-site-menu">
                     <nav class="site-menu">
                         <ul>
-                            <li><a href="concept.html">コンセプト</a></li>
-                            <li><a href="members.html">メンバー</a></li>
-                            <li><a href="access.html">アクセス</a></li>
+                            <li><a href="task.html">タスク管理</a></li>
+                            <li><a href="profile.html">プロフィール</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -36,14 +35,41 @@
         <main class="main">
             <nav class="floating">
                 <ul>
-                    <li><a href="#">トップ</a></li>
+                    <li><a href="#">Home</a></li>
                 </ul>
             </nav>
             <div class="first-view">
                 <div class="first-view-text">
-                    <h1>名城大学情報工学部</h1>
-                    <p>想像以上を，創造しよう．</p>
+                    <h1>Task Managing Sites</h1>
                 </div>
+            </div>
+            
+            <div class="task-list">
+                <h1>タスクリスト</h1>
+                <h2>未完了の課題</h2>
+                <ul id="task-list-pre"></ul>
+                <h2>完了済みの課題</h2>
+                <ul id="task-list-post"></ul>
+
+                <h2>完了済みの課題（最新二つ）</h2>
+                <ul id="task-list-post-near"></ul>
+
+                <h2>ピン止めされた課題</h2>
+                <div id="task-pinned"></div>
+
+                <h2>一番時間のかかる課題</h2>
+                <div id="task-long"></div>
+
+                <h2>一番締め切りが早い課題</h2>
+                <div id="task-early"></div>
+
+                <h2>ユーザー情報</h2>
+                ユーザー名: <div id="user-name"></div>
+                <div>アイコン: <img id="user-icon" src="" alt="User Icon"></div>
+
+                <h2>残り時間と課題数</h2>
+                <div id="remain-time">残り時間: </div>
+                
             </div>
         </main>
         <!--main ここまで-->
@@ -51,15 +77,11 @@
         <footer class="footer">
             <nav class="site-menu">
                 <ul>
-                    <li><a href="concept.html">コンセプト</a></li>
-                    <li><a href="members.html">メンバー</a></li>
-                    <li><a href="access.html">アクセス</a></li>
+                    <li><a href="task.html">タスク管理</a></li>
+                    <li><a href="profile.html">プロフィール</a></li>
                 </ul>
             </nav>
-            <a class="fotter-logo" href="index.html">
-                <img src="images/common/logo_footer.png" alt="ロゴ">
-            </a>
-            <p class="copyright"><small>&copy;名城大学情報工学部</small></p>
+            <p class="copyright"><small>&copy;研究開発リテラシーG18</small></p>
         </footer>
         <!--fotter ここまで-->
     </body>
