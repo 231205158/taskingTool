@@ -45,26 +45,33 @@
                     <p>効率化されたタスク管理</p>
                 </div>
             </div>
-            <div class="peofile">
-                <div class="profile-text">
-                    <h2>プロフィール</h2>
-                    <img id="user-icon" alt="User Icon">
-                    <div id="user-name"></div>
-                    <div class="Tasks">
-                        <h3>固定された課題</h3>
-                        <div id="task-pinned"></div>
-                        <h3>未達成課題</h3>
-                        <ul id="task-list-pre"></ul>
-                        <h3>重要課題</h3>
-                        <div id="task-long"></div>
-                        <h3>緊急課題</h3>
-                        <div id="task-early"></div>
-                        <h3>直近の課題</h3>
-                        <ul id="task-finished-near"></ul>
-                        <h3>過去の課題一覧</h3>
-                        <ul id="task-list-post"></ul>
-                    </div>                    
-                </div>
+            
+            <div class="task-list">
+                <h1>タスクリスト</h1>
+                <h2>未完了の課題</h2>
+                <ul id="task-list-pre"></ul>
+                <h2>完了済みの課題</h2>
+                <ul id="task-list-post"></ul>
+
+                <h2>完了済みの課題（最新二つ）</h2>
+                <ul id="task-list-post-near"></ul>
+
+                <h2>ピン止めされた課題</h2>
+                <div id="task-pinned"></div>
+
+                <h2>一番時間のかかる課題</h2>
+                <div id="task-long"></div>
+
+                <h2>一番締め切りが早い課題</h2>
+                <div id="task-early"></div>
+
+                <h2>ユーザー情報</h2>
+                ユーザー名: <div id="user-name"></div>
+                <div>アイコン: <img id="user-icon" src="" alt="User Icon"></div>
+
+                <h2>残り時間と課題数</h2>
+                <div id="remain-time">残り時間: </div>
+                
             </div>
         </main>
         <!--main ここまで-->
