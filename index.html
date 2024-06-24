@@ -10,7 +10,8 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
-        <script src="js/script.js"></script>
+        <script src="js/common.js"></script>
+        <script src="js/index.js"></script>
     </head>
     <body>
         <!--header ここから-->
@@ -26,6 +27,9 @@
                             <li><a href="task.html">タスク管理</a></li>
                             <li><a href="profile.html">プロフィール</a></li>
                         </ul>
+                        <!--ユーザヘッダ画像
+                        <img id="user-icon-header" src="" alt="User Icon Header">
+                        -->
                     </nav>
                 </div>
             </div>
@@ -45,31 +49,25 @@
             </div>
             
             <div class="task-list">
-                <h1>タスクリスト</h1>
-                <h2>未完了の課題</h2>
-                <ul id="task-list-pre"></ul>
-                <h2>完了済みの課題</h2>
-                <ul id="task-list-post"></ul>
+                <h2>ユーザー情報</h2>
+                <div>アイコン: <img id="user-icon" src="" alt="User Icon"></div>
+                ユーザー名: <div id="user-name"></div>
 
-                <h2>完了済みの課題（最新二つ）</h2>
-                <ul id="task-list-post-near"></ul>
+                <h1>タスクリスト</h1>
 
                 <h2>ピン止めされた課題</h2>
                 <div id="task-pinned"></div>
 
-                <h2>一番時間のかかる課題</h2>
+                <div id="remain-number">課題数: </div>
+
+                <h2>重要課題</h2>
                 <div id="task-long"></div>
 
-                <h2>一番締め切りが早い課題</h2>
+                <h2>緊急課題</h2>
                 <div id="task-early"></div>
 
-                <h2>ユーザー情報</h2>
-                ユーザー名: <div id="user-name"></div>
-                <div>アイコン: <img id="user-icon" src="" alt="User Icon"></div>
-
-                <h2>残り時間と課題数</h2>
-                <div id="remain-time">残り時間: </div>
-                
+                <h2>完了済みの課題（最新二つ）</h2>
+                <ul id="task-list-post-near"></ul>
             </div>
         </main>
         <!--main ここまで-->

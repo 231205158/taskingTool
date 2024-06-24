@@ -11,7 +11,8 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
-        <script src="js/progress.js"></script>
+        <script src="js/common.js"></script>
+        <script src="js/profile.js"></script>
     </head>
     <body>
         <!--header ここから-->
@@ -42,8 +43,11 @@
             <div class="first-view">
                 <div class="first-view-text">
                     <!---必要要素のみ表示できるよう後日更新-->
-                    <h2>ユーザー情報</h2>
-                    ユーザー名: <div id="user-name"></div>
+                    <h1>ユーザー情報</h1>
+                </div>
+            </div>
+            <div class="element">
+                ユーザー名: <div id="user-name"></div>
                     <div>アイコン: <img id="user-icon" src="" alt="User Icon"></div>
                     <h1>達成状況</h1>
                     <h2>累計</h2>
@@ -51,7 +55,6 @@
                     <p>合計課題完了数：<span id=""></span></p>
                     <p>未完了課題時間：<span id=""></span>分</p>
                     <p>未完了課題数：<span id=""></span></p>
-                </div>
             </div>
         </main>
         <!--main ここまで-->
