@@ -1,86 +1,98 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>TaskingTool-Home</title>
-        <meta name="description" content="TaskingTool-Home">
-        <meta name="viewport" content="width=device-width">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <link href="css/index.css" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
-        <script src="js/common.js"></script>
-        <script src="js/index.js"></script>
-    </head>
-    <body>
-        <!--header ここから-->
-        <header class="header">
-            <div class="header-inner">
-                <a class="header-logo" href="index.html">
-                    <img src="images/common/sitelogo.png" alt="ロゴ">
-                </a>
-                <button class="toggle-menu-button"></button>
-                <div class="header-site-menu">
-                    <nav class="site-menu">
-                        <ul>
-                            <li><a href="task.html">タスク管理</a></li>
-                            <li><a href="profile.html">プロフィール</a></li>
-                        </ul>
-                        <!--ユーザヘッダ画像
+
+<head>
+    <meta charset="UTF-8">
+    <title>TaskingTool-Home</title>
+    <meta name="description" content="TaskingTool-Home">
+    <meta name="viewport" content="width=device-width">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link href="css/index.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
+    <script src="js/common.js"></script>
+    <script src="js/index.js"></script>
+</head>
+
+<body>
+    <!--header ここから-->
+    <header class="header">
+        <div class="header-inner">
+            <a class="header-logo" href="index.html">
+                <img src="images/common/sitelogo.png" alt="ロゴ">
+            </a>
+            <button class="toggle-menu-button"></button>
+            <div class="header-site-menu">
+                <nav class="site-menu">
+                    <ul>
+                        <li><a href="task.html">タスク管理</a></li>
+                        <li><a href="profile.html">プロフィール</a></li>
+                    </ul>
+                    <!--ユーザヘッダ画像
                         <img id="user-icon-header" src="" alt="User Icon Header">
                         -->
-                    </nav>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!--header ここまで-->
+    <!--main ここから-->
+    <main class="main">
+        <nav class="floating">
+            <ul>
+                <li><a href="#">Home</a></li>
+            </ul>
+        </nav>
+        <div class="first-view">
+            <div class="first-view-text">
+                <h1>Task Managing Sites</h1>
+            </div>
+        </div>
+        <div class="profile-contsnts">
+            <h2>ユーザー情報</h2>
+            <div class="pro-info">
+                <div class="pro-icon">
+                    <img id="user-icon" src="" alt="User Icon">
+                </div>
+                <div class="pro-name">
+                    ユーザー名: <div id="user-name"></div>
                 </div>
             </div>
-        </header>
-        <!--header ここまで-->
-        <!--main ここから-->
-        <main class="main">
-            <nav class="floating">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                </ul>
-            </nav>
-            <div class="first-view">
-                <div class="first-view-text">
-                    <h1>Task Managing Sites</h1>
-                </div>
-            </div>
-            
+            <h1>タスクリスト</h1>
             <div class="task-list">
-                <h2>ユーザー情報</h2>
-                <div>アイコン: <img id="user-icon" src="" alt="User Icon"></div>
-                ユーザー名: <div id="user-name"></div>
-
-                <h1>タスクリスト</h1>
-
-                <h2>ピン止めされた課題</h2>
-                <div id="task-pinned"></div>
-
-                <div id="remain-number">課題数: </div>
-
-                <h2>重要課題</h2>
-                <div id="task-long"></div>
-
-                <h2>緊急課題</h2>
-                <div id="task-early"></div>
-
-                <h2>完了済みの課題（最新二つ）</h2>
-                <ul id="task-list-post-near"></ul>
+                <div class="item">
+                    <h2>ピン止めされた課題</h2>
+                    <div id="task-pinned"></div>
+                    <div id="remain-number">課題数: </div>
+                </div>
+                <div class="item">
+                    <h2>重要課題</h2>
+                    <div id="task-long"></div>
+                </div>
+                <div class="item">
+                    <h2>緊急課題</h2>
+                    <div id="task-early"></div>
+                </div>
+                <div class="item">
+                    <h2>完了済みの課題（最新二つ）</h2>
+                    <ul id="task-list-post-near"></ul>
+                </div>
             </div>
-        </main>
-        <!--main ここまで-->
-        <!--fotter ここから-->
-        <footer class="footer">
-            <nav class="site-menu">
-                <ul>
-                    <li><a href="task.html">タスク管理</a></li>
-                    <li><a href="profile.html">プロフィール</a></li>
-                </ul>
-            </nav>
-            <p class="copyright"><small>&copy;研究開発リテラシーG18</small></p>
-        </footer>
-        <!--fotter ここまで-->
-    </body>
+        </div>
+    </main>
+    <!--main ここまで-->
+    <!--fotter ここから-->
+    <footer class="footer">
+        <nav class="site-menu">
+            <ul>
+                <li><a href="task.html">タスク管理</a></li>
+                <li><a href="profile.html">プロフィール</a></li>
+            </ul>
+        </nav>
+        <p class="copyright"><small>&copy;研究開発リテラシーG18</small></p>
+    </footer>
+    <!--fotter ここまで-->
+</body>
+
 </html>

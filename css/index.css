@@ -17,6 +17,54 @@ nav.floating {
     align-items: center;
 }
 
+.profile-contsnts{
+    padding-top: 1%;
+}
+.profile-contsnts h1,.profile-contsnts h2{
+    padding-top: 1%;
+}
+
+.pro-info{
+    margin-top: 10px;
+    margin-left: 10%;
+    display: flex;
+}
+
+.pro-icon img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.pro-name > div{
+    display: inline;
+}
+
+.task-list{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.item{
+    width: 50%;
+    height: 50%;
+    padding-top: 1%;
+    padding-left: 2%;
+}
+
+.item:nth-child(1){
+    order: 1;
+}
+.item:nth-child(2){
+    order: 2;
+}
+.item:nth-child(3){
+    order: 3;
+}
+.item:nth-child(4){
+    order: 4;
+}
+
 .first-view-text {
     width: 100%;
     max-width: 1200px;
@@ -72,6 +120,7 @@ body {
 
 img {
     max-width: 50%;
+    margin-left: 10px;
 }
 
 .header-inner {
