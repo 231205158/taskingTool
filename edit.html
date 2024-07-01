@@ -24,8 +24,9 @@
                 <div class="header-site-menu">
                     <nav class="site-menu">
                         <ul>
-                            <li><a href="task.html">タスク管理</a></li>
+                            <li><a href="taskprefinish.html">タスク管理</a></li>
                             <li><a href="profile.html">プロフィール</a></li>
+                            <li><a href="profile.html"><img id="user-icon-header" src="" alt="User Icon Header"></a></li>
                         </ul>
                     </nav>
                 </div>
@@ -38,14 +39,21 @@
                 <div class="first-view-text">
                     <h2>タスク編集</h2>
                 </div>
+                <label class="label">科目名:</label><input type="text" id="task-text"/><br>
+                <label class="label">時間:</label><input type="number" id="task-text"/>/<input type="number" id="task-text"/><br>
+                <label class="label">提出締切:</label><input type="date" name="calendar" max="2099-12-31"><br>
+                <button class="button" type="button">登録</button>
             </div>
             <div class="element">
                 <ul id="task-edit"></ul>
                 <ul>
-                    <!--idを適切に入力
-                    <li>タスク名<span id=""></span></li>
-                    <li>時間：<span id=""></span></li>
-                    <li>提出締切：<span id=""></span></li>
+                    <!--
+                    <li>タスク名<span id="task-text"></span></li>
+                    <li>時間：<span id="task-limit"></span></li>
+                    <li><span id="task-time-expect"></span></li>
+                    <li><span id="task-time-remain"></span></li>
+                    <li><span id="task-time-did"></span></li>
+                    <li>提出締切：<span id="task-complete-date"></span></li>
                     -->
                 </ul>
             </div>
@@ -55,11 +63,11 @@
         <footer class="footer">
             <nav class="site-menu">
                 <ul>
-                    <li><a href="task.html">タスク管理</a></li>
+                    <li><a href="taskprefinish.html">タスク管理</a></li>
                     <li><a href="profile.html">プロフィール</a></li>
                 </ul>
             </nav>
-            <p class="copyright"><small>&copy;研究開発リテラシーG18</small></p>
+            <a class="copyright" href="member.html"><small>&copy;研究開発リテラシーG18</small></a>
         </footer>
         <!--fotter ここまで-->
     </body>

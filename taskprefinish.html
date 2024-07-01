@@ -25,8 +25,9 @@
                 <div class="header-site-menu">
                     <nav class="site-menu">
                         <ul>
-                            <li><a href="task.html">タスク管理</a></li>
+                            <li><a href="taskprefinish.html">タスク管理</a></li>
                             <li><a href="profile.html">プロフィール</a></li>
+                            <li><a href="profile.html"><img id="user-icon-header" src="" alt="User Icon Header"></a></li>
                         </ul>
                     </nav>
                 </div>
@@ -40,6 +41,16 @@
                     <h1>未完了課題一覧</h1>
                 </div>
             </div>
+
+            <button class="button" onclick="location.href='edit.html'">新規登録</button>
+
+            <button class="button" onclick="location.href='taskfinish.html'">完了済課題</button>
+            <ul>
+                <li>課題名</li>
+                <li>提出締切日</li>
+                <li>予想所要時間</li>
+                <li>完了度</li>
+            </ul>
             <ul id="task-list-post"></ul>
         </main>
         <!--main ここまで-->
@@ -47,11 +58,11 @@
         <footer class="footer">
             <nav class="site-menu">
                 <ul>
-                    <li><a href="task.html">タスク管理</a></li>
+                    <li><a href="taskprefinish.html">タスク管理</a></li>
                     <li><a href="profile.html">プロフィール</a></li>
                 </ul>
             </nav>
-            <p class="copyright"><small>&copy;研究開発リテラシーG18</small></p>
+            <a class="copyright" href="member.html"><small>&copy;研究開発リテラシーG18</small></a>
         </footer>
         <!--fotter ここまで-->
     </body>
