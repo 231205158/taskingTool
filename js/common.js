@@ -32,6 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const userIcon = document.getElementById('user-icon-header');
     const remainTimesAmount = document.getElementById('remain-time-footer');
     
-    userIcon.src = 'sampleIcon.jpg';
+    userIcon.src = 'images/profile-image/sampleIcon.jpg';
     remainTimesAmount.textContent = '4545';
 });
