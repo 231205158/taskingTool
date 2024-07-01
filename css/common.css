@@ -49,6 +49,15 @@ img {
     display: block;
     width: 170px;
 }
+.header-info{
+    display: flex;
+    align-items: center;
+}
+.header-info img{
+    width: 200px;
+    height: auto;
+    border-radius: 50%;
+}
 
 .site-menu ul {
     display: flex;
