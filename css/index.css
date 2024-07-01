@@ -6,7 +6,16 @@ nav.floating {
     left: 50px;
     background-color: #d0d0d0;
 }
-
+.header-info{
+    display: flex;
+    align-items: center;
+    text-align: right;
+}
+.header-info img{
+    width: 200px;
+    height: auto;
+    border-radius: 50%;
+}
 .first-view {
     height: calc(100vh - 110px);
     background-color:#4b2c14;
@@ -117,7 +126,6 @@ body {
     line-height: 1;
     background-color: #ffffff;
 }
-
 img {
     max-width: 50%;
 }
