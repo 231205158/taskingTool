@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     };
 
-    userIcon.src = 'sampleIcon.jpg';
+    userIcon.src = 'images/profile-image/sampleIcon.jpg';
     userName.textContent = '田所　浩二';
     
     displayTaskInElement(exListPre[2], pinnedTask);
