@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const remainTimesAmount = document.getElementById('remain-time');
     const remainTasksAmount = document.getElementById('remain-number');
 
-    userIcon.src = 'sampleIcon.jpg';
+    userIcon.src = 'images/profile-image/sampleIcon.jpg';
     userName.textContent = '田所　浩二';
     didTime.textContent ='5';
     didNumber.textContent = '3';
