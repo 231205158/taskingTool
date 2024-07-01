@@ -1,5 +1,16 @@
 @charset "utf-8";
 
+header{
+    border-bottom: 1px solid #000000;
+}
+body{
+    background-color: #ffffff;
+}
+.first-view{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
 nav.floating {
     position: absolute;
     top: 100px;
@@ -7,40 +18,33 @@ nav.floating {
     background-color: #d0d0d0;
 }
 
-.first-view {
-    height: calc(100vh - 110px);
-    background-color: #4b2c14;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-}
-
-.first-view-text {
-    width: 100%;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 40px;
-    padding-bottom: 80px;
-    color: #ffffff;
-    font-weight: bold;
-    text-shadow: 1px 1px 10px #4b2c14;
-}
-
-.first-view-text h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 56px;
-    line-height: 72px;
-}
-
-.first-view-text p {
-    font-size: 18px;
-    margin-top: 20px;
-}
-
 .lead {
     max-width: 1200px;
     margin: 60px auto;
+}
+.conteiner{
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+table{
+    text-align: center;
+    padding-top: 10px;
+    border: 2px solid #000000;
+    border-collapse: collapse;
+    width: 90%;
+}
+th, td{
+    border: 1px solid #bbb;
+    padding: 2px 8px 0;
+    text-align: left;
+    padding: 10px;
+    align-self: center;
+}
+thead > tr > th{
+    background-color: #ddd;
+    font-size: 18px;
+    border-bottom: 2px solid #000000;
 }
