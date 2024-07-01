@@ -1,7 +1,0 @@
-index - トップ
-edit - 編集画面
-task - タスク一覧
-taskprefinish - 未完了課題一覧
-taskfinish - 完了済み課題一覧
-profile - ユーザプロフィール
-member - サイト作成メンバー
