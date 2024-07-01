@@ -21,19 +21,4 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('task-time-did') = exListPre.didTimes[exListPre.didTimes.length -1];
     document.getElementById('task-time-expect') = exListPre.expectTime;
     document.getElementById('task-limit') = exListPre.limit;
-    
-    displayTaskInElement(exListPre[1], editTask);
 });
-            
-            const taskDidTimeElement = document.createElement('div');
-            taskDidTimeElement.className = 'task-time-did';
-            taskDidTimeElement.textContent = String(task.didTimes[task.didTimes.length -1]);
-    
-            const taskExpectTimeElement = document.createElement('div');
-            taskExpectTimeElement.className = 'task-time-expect';
-            taskExpectTimeElement.textContent = task.expectTime;
-    
-            const taskLimitElement = document.createElement('div');
-            taskLimitElement.className = 'task-limit';
-            taskLimitElement.textContent = task.limit;
-    
