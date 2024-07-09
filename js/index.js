@@ -19,7 +19,7 @@
     task-list-post-near 完了済みの課題最新二つのリスト
 */
 
-document.addEventListener('DOMContentLoaded', () => {
+const loadLocalStorage = () => {
     const userName = document.getElementById('user-name');
     const userIcon = document.getElementById('user-icon');
     const pinnedTask = document.getElementById('task-pinned');
@@ -27,17 +27,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const longTask = document.getElementById('task-long');
     const earlyTask = document.getElementById('task-early');
     const finished2Tasks = document.getElementById('task-list-post-near');
+    
+    var preTasks;
+    var postTasks;
+    var profile;
+    var pinned;
+    var emptyTask = [{text:'新規タスク', limit:'', expectTime:0, didTimes:[0], editDates:['']}];
+    var emptyProfile = {icon:'images/profile-image/sampleIcon.jpg', name:'仮野 名城'};
+    const loadJSON = () => {
+        preTasks = JSON.parse(localStorage.getItem('preTasks')) || emptyTask;
+        postTasks = JSON.parse(localStorage.getItem('preTasks')) || emptyTask;
+        profile = JSON.parse(localStorage.getItem('profile')) || emptyProfile;
+        pinned = localStorage.getItem('pinnedTask') || 0;
+    };
 
-    // 初期データを設定するなどの処理をここで行う
-    var exListPre = [
-        {'text':'真夏の夜の課題', 'limit':'2024/5/14 00:00', 'expectTime':114, 'didTimes':[0], 'editDates':['2024/4/1']},
-        {'text':'現代の野獣（論文）', 'limit':'2024/4/5 00:00', 'expectTime':45, 'didTimes':[0], 'editDates':['2024/4/1']},
-        {'text':'消息不明の男優', 'limit':'2024/8/10 00:00', 'expectTime':81, 'didTimes':[0], 'editDates':['2024/4/1']},
-        {'text':'ディジ信', 'limit':'2024/6/21 00:00', 'expectTime':100, 'didTimes':[0, 10, 25, 30], 'editDates':['2024/4/1', '2024/5/1', '2024/5/5', '2024/5/25']}];
-
-    var exListPost = [
-        {'text':'ダミー', 'limit':'2024/5/14 00:00', 'didTimes':[0], 'editDates':['2024/4/1']},
-        {'text':'ヤジュミエール', 'limit':'2024/5/14 00:00', 'didTimes':[0, 19], 'editDates':['2024/4/1', '2024/1/9']}];
+    loadJSON();
 
     // 特定のタスクを指定された要素に表示する関数
     const displayTaskInElement = (task, constName) => {
@@ -58,11 +62,11 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const taskRemainTimeElement = document.createElement('div');
             taskRemainTimeElement.className = 'task-time-remain';
-            taskRemainTimeElement.textContent = String(task.expectTime - task.didTimes[task.didTimes.length -1]);
+            taskRemainTimeElement.textContent = task.expectTime - task.didTimes[task.didTimes.length -1];
     
             const taskDidTimeElement = document.createElement('div');
             taskDidTimeElement.className = 'task-time-did';
-            taskDidTimeElement.textContent = String(task.didTimes[task.didTimes.length -1]);
+            taskDidTimeElement.textContent = task.didTimes[task.didTimes.length -1];
     
             constName.appendChild(taskTextElement);
             constName.appendChild(taskLimitElement);
@@ -71,19 +75,39 @@ document.addEventListener('DOMContentLoaded', () => {
             constName.appendChild(taskDidTimeElement);
         };
     };
-
-    userIcon.src = 'sampleIcon.jpg';
-    userName.textContent = '田所　浩二';
     
-    displayTaskInElement(exListPre[2], pinnedTask);
+    userIcon.src = profile.icon;
+    userName.textContent = profile.name;
     
-    remainTasksAmount.textContent = '810';
+    displayTaskInElement(exListPre[pinned], 'task-pinned', pinnedTask);
 
-    displayTaskInElement(exListPre[0], longTask);
-    displayTaskInElement(exListPre[1], earlyTask);
+    remainTasksAmount.textContent = preTasks.length;
 
+    var i = 0;
+    var maxTime = {time:0, index:0}; 
+    preTasks.forEach(task => {
+        if(maxTime < task.expectTime){
+            maxTime.time = task.expectTime;
+            maxTime.index = i;
+        };
+        i++;
+    });
+    displayTaskInElement(exListPre[maxTime.index], 'task-long', longTask);
+
+    var i = 0;
+    var earliestDate = {date:new Date(), index:0};
+    earliestDate.date.setDate(preTasks[0].limit);
+    preTasks.slice(1).forEach(task =>{
+        if(earliestDate.date > task.limit){
+            earliestDate.date.setDate(task.limit);
+            earliestDate.index = i;
+        };
+        i++;
+    });
+    displayTaskInElement(exListPre[maxTime.index], 'task-early', earlyTask);
+    
     finished2Tasks.innerHTML = '';
-    exListPost.slice(-2).forEach(task => {
+    postTasks.slice(-2).forEach(task => {
         const li = document.createElement('li');
 
         const taskTextElement = document.createElement('span');
@@ -96,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const taskDidTimeElement = document.createElement('span');
         taskDidTimeElement.className = 'task-time-did';
-        taskDidTimeElement.textContent = String(task.didTimes.reduce((a, b) => a + b, 0));
+        taskDidTimeElement.textContent = task.didTimes.reduce((a, b) => a + b, 0);
 
         li.appendChild(taskTextElement);
         li.appendChild(taskCompleteDateElement);
@@ -104,4 +128,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         finished2Tasks.appendChild(li);
     });
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadLocalStorage();
+});
+
+document.addEventListener('dataMade', () => {
+    loadLocalStorage();
 });
