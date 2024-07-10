@@ -1,0 +1,33 @@
+.first-view{
+    text-align: center;
+}
+.item{
+    padding-bottom: 1%;
+}
+
+.item:nth-child(1){
+    order: 1;
+}
+.item:nth-child(2){
+    order: 2;
+}
+.item:nth-child(3){
+    order: 3;
+}
+.item:nth-child(4){
+    order: 4;
+}
+
+.button{
+    padding: 10px;
+    background-color: #5cb85c;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+}
+input[type=text], input[type=number], input[type=date]{
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}

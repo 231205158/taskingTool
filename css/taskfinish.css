@@ -7,28 +7,6 @@ nav.floating {
     background-color: #d0d0d0;
 }
 
-.first-view {
-    height: calc(100vh - 110px);
-    background-color: #4b2c14;
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-}
-
-.first-view-text {
-    width: 100%;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    padding-left: 40px;
-    padding-bottom: 80px;
-    color: #ffffff;
-    font-weight: bold;
-    text-shadow: 1px 1px 10px #4b2c14;
-}
-
 .first-view-text h1 {
     font-family: 'Montserrat', sans-serif;
     font-size: 56px;
@@ -43,4 +21,14 @@ nav.floating {
 .lead {
     max-width: 1200px;
     margin: 60px auto;
+}
+.button{
+    margin-left: 1%;
+    margin-bottom: 1%;
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    background-color: coral;
 }

@@ -2,13 +2,14 @@
 
 *,
 ::before,
-::after{
+::after {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-ul, ol{
+ul,
+ol {
     list-style: none;
 }
 
@@ -18,11 +19,15 @@ a {
 }
 
 body {
-    font-family: sans-serif;
+    font-family: "Noto Serif JP", sans-serif;
     font-size: 16pt;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
     color: #000000;
     line-height: 1;
     background-color: #ffffff;
+
 }
 
 img {
@@ -49,11 +54,13 @@ img {
     display: block;
     width: 170px;
 }
-.header-info{
+
+.header-info {
     display: flex;
     align-items: center;
 }
-.header-info img{
+
+.header-info img {
     width: 200px;
     height: auto;
     border-radius: 50%;
@@ -75,7 +82,7 @@ img {
     font-style: normal;
 }
 
-@media (max-width: 800px){
+@media (max-width: 800px) {
     .site-menu ul {
         display: block;
         text-align: center;
