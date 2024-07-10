@@ -16,8 +16,10 @@ body{
 }
 
 .first-view h1 {
-    font-family: 'Montserrat', sans-serif;
-    font-size: 56px;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
     line-height: 72px;
     color: #000000;
 }
@@ -47,6 +49,7 @@ table{
     border: 2px solid #000000;
     border-collapse: collapse;
     width: 90%;
+    border: none;
 }
 
 tbody{
@@ -55,13 +58,17 @@ tbody{
 
 th, td{
     border: 1px solid #bbb;
-    padding: 2px 8px 0;
     text-align: left;
     padding: 10px;
-    align-self: center;
+
 }
 thead > tr > th{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: normal;
     background-color: #ddd;
     font-size: 18px;
     border-bottom: 2px solid #000000;
 }
+
