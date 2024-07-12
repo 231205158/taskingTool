@@ -8,51 +8,19 @@
         task-complete-date 完了日
 */
 
-document.addEventListener('DOMContentLoaded', () => {
-    const taskListPost = document.getElementById('task-list-post');
+const loadLocalStorageForTaskListPre = () => {
+    const taskListPre = document.getElementById('task-list-pre');
 
-    var exListPost = [
-        {'text':'ダミー', 'limit':'2024/5/14 00:00', 'didTimes':[0], 'editDates':['2024/4/1']},
-        {'text':'ヤジュミエール', 'limit':'2024/5/14 00:00', 'didTimes':[0, 19], 'editDates':['2024/4/1', '2024/1/9']}];
-
-    taskListPost.innerHTML = '';
-    exListPost.forEach(task => {
-        const li = document.createElement('li');
-
-        const taskTextElement = document.createElement('span');
-        taskTextElement.className = 'task-text';
-        taskTextElement.textContent = task.text;
-
-        const taskCompleteDateElement = document.createElement('span');
-        taskCompleteDateElement.className = 'task-completeDate';
-        taskCompleteDateElement.textContent = task.editDates[task.editDates.length -1];
-        
-        const taskDidTimeElement = document.createElement('span');
-        taskDidTimeElement.className = 'task-time-did';
-        taskDidTimeElement.textContent = String(task.didTimes[task.didTimes.length -1]);
-
-        li.appendChild(taskTextElement);
-        li.appendChild(taskCompleteDateElement);
-        li.appendChild(taskDidTimeElement);
-
-        taskListPost.appendChild(li);
-    });
-});
-
-
-const loadLocalStorage = () => {
-    const taskListPost = document.getElementById('task-list-pre');
-
-    var postTasks;
+    var preTasks;
     var emptyTask = [{text:'------', limit:'', expectTime:0, didTimes:[0], editDates:['']}];
     const loadJSON = () => {
-        postTasks = JSON.parse(localStorage.getItem('postTasks')) || emptyTask;
+        preTasks = JSON.parse(localStorage.getItem('preTasks')) || emptyTask;
     };
 
     loadJSON();
 
-    taskListPost.innerHTML = '';
-    postTasks.forEach(task => {
+    taskListPre.innerHTML = '';
+    preTasks.forEach(task => {
         const li = document.createElement('li');
 
         const taskTextElement = document.createElement('span');
@@ -81,10 +49,10 @@ const loadLocalStorage = () => {
         li.appendChild(taskRemainTimeElement);
         li.appendChild(taskDidTimeElement);
 
-        taskListPost.appendChild(li);
+        taskListPre.appendChild(li);
     });
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadLocalStorage();
+    loadLocalStorageForTaskListPre();
 });

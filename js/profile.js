@@ -7,7 +7,7 @@
     remain-number 全課題残り数
 */
 
-const loadLocalStorage = () => {
+const loadLocalStorageForProfile = () => {
     const userIcon = document.getElementById('user-icon');
     const userName = document.getElementById('user-name');
     const didTime = document.getElementById('did-time');
@@ -50,9 +50,9 @@ const loadLocalStorage = () => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadLocalStorage();
+    loadLocalStorageForProfile();
 });
 
 document.addEventListener('dataMade', () => {
-    loadLocalStorage();
+    loadLocalStorageForProfile();
 });

@@ -19,7 +19,7 @@
     task-list-post-near 完了済みの課題最新二つのリスト
 */
 
-const loadLocalStorage = () => {
+const loadLocalStorageForIndex = () => {
     const userName = document.getElementById('user-name');
     const userIcon = document.getElementById('user-icon');
     const pinnedTask = document.getElementById('task-pinned');
@@ -131,9 +131,5 @@ const loadLocalStorage = () => {
 };
 
 document.addEventListener('DOMContentLoaded', () => {
-    loadLocalStorage();
-});
-
-document.addEventListener('dataMade', () => {
-    loadLocalStorage();
+    loadLocalStorageForIndex();
 });
