@@ -35,38 +35,11 @@ const loadLocalStorage = () => {
     var postTasks;
     var profile;
     var pinned;
-    var emptyTask = [{text:'新規タスク', limit:'', expectTime:0, didTimes:[0], editDates:['']}];
-    var emptyProfile = {icon:'images/profile-image/sampleIcon.jpg', name:'仮野 名城'};
+    var emptyTask = [{expectTime:0, didTimes:[0]}];
+    var emptyProfile = {icon:'images/profile-image/sampleIcon.jpg'};
     const loadJSON = () => {
-        var isEmpty = false;
-        preTasks = JSON.parse(localStorage.getItem('preTasks'));
-        if(!(preTasks)){
-            preTasks = emptyTask;
-            isEmpty = true;
-            localStorage.setItem('preTasks', JSON.stringify(preTasks));
-        };
-        postTasks = JSON.parse(localStorage.getItem('preTasks'));
-        if(!(postTasks)){
-            postTasks = [emptyTask, emptyTask];
-            isEmpty = true;
-            localStorage.setItem('postTasks', JSON.stringify(postTasks));
-        };
-        profile = JSON.parse(localStorage.getItem('profile'));
-        if(!(profile)){
-            preTasks = emptyProfile;
-            isEempty = true;
-            localStorage.setItem('profile', JSON.stringify(profile));
-        };
-        pinned = localStorage.getItem('pinnedTask');
-        if(!(pinned)){
-            preTasks = emptyTask;
-            isEmpty = true;
-            localStorage.setItem('pinned', JSON.stringify(pinned));
-        };
-        if(isEmpty){
-            const event = new CustomEvent('dataMade');
-            document.dispatchEvent(event);
-        }
+        preTasks = JSON.parse(localStorage.getItem('preTasks')) || emptyTask;
+        profile = JSON.parse(localStorage.getItem('profile')) || emptyProfile;
     };
 
     loadJSON();
