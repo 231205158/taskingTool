@@ -8,18 +8,21 @@
         task-complete-date 完了日
 */
 
-document.addEventListener('DOMContentLoaded', () => {
+const loadLocalStorage = () => {
     const taskListPre = document.getElementById('task-list-pre');
+
+    var preTasks;
+    var emptyTask = [{text:'------', limit:'', expectTime:0, didTimes:[0], editDates:['']}];
+    const loadJSON = () => {
+        preTasks = JSON.parse(localStorage.getItem('preTasks')) || emptyTask;
+    };
+
+    loadJSON();
     
-    // 初期データを設定するなどの処理をここで行う
-    var exListPre = [
-        {'text':'真夏の夜の課題', 'limit':'2024/5/14 00:00', 'expectTime':114, 'didTimes':[0], 'editDates':['2024/4/1']},
-        {'text':'現代の野獣（論文）', 'limit':'2024/4/5 00:00', 'expectTime':45, 'didTimes':[0], 'editDates':['2024/4/1']},
-        {'text':'消息不明の男優', 'limit':'2024/8/10 00:00', 'expectTime':81, 'didTimes':[0], 'editDates':['2024/4/1']},
-        {'text':'ディジ信', 'limit':'2024/6/21 00:00', 'expectTime':100, 'didTimes':[0, 10, 25, 30], 'editDates':['2024/4/1', '2024/5/1', '2024/5/5', '2024/5/25']}];
+    localStorage.setItem('preTasks', JSON.stringify(preTasks));
 
     taskListPre.innerHTML = '';
-    exListPre.forEach(task => {
+    preTasks.forEach(task => {
         const li = document.createElement('li');
 
         const taskTextElement = document.createElement('span');
@@ -36,11 +39,11 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const taskRemainTimeElement = document.createElement('span');
         taskRemainTimeElement.className = 'task-time-remain';
-        taskRemainTimeElement.textContent = String(task.expectTime - task.didTimes[task.didTimes.length -1]);
+        taskRemainTimeElement.textContent = task.expectTime - task.didTimes[task.didTimes.length -1];
 
         const taskDidTimeElement = document.createElement('span');
         taskDidTimeElement.className = 'task-time-did';
-        taskDidTimeElement.textContent = String(task.didTimes[task.didTimes.length -1]);
+        taskDidTimeElement.textContent = task.didTimes[task.didTimes.length -1];
 
         li.appendChild(taskTextElement);
         li.appendChild(taskLimitElement);
@@ -50,4 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         taskListPre.appendChild(li);
     });
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadLocalStorage();
 });

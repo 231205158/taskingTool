@@ -2,23 +2,43 @@
     task-edit 編集する課題
     
         task-text タスク名
-        task-limit 期限
-        task-time-expect 予想必要時間
-        task-time-remain ↑の残り
         task-time-did 経過時間
-        task-complete-date 完了日
+        task-time-expect 予想必要時間
+        task-limit 期限
 */
 
-document.addEventListener('DOMContentLoaded', () => {
-    // 初期データを設定するなどの処理をここで行う
-    var exListPre = [
-        {'text':'真夏の夜の課題', 'limit':'2024/5/14 00:00', 'expectTime':114, 'didTimes':[0], 'editDates':['2024/4/1']},
-        {'text':'現代の野獣（論文）', 'limit':'2024/4/5 00:00', 'expectTime':45, 'didTimes':[0], 'editDates':['2024/4/1']},
-        {'text':'消息不明の男優', 'limit':'2024/8/10 00:00', 'expectTime':81, 'didTimes':[0], 'editDates':['2024/4/1']},
-        {'text':'ディジ信', 'limit':'2024/6/21 00:00', 'expectTime':100, 'didTimes':[0, 10, 25, 30], 'editDates':['2024/4/1', '2024/5/1', '2024/5/5', '2024/5/25']}];
+const loadLocalStorage = () => {
+    var index = JSON.parse(localStorage.getItem('editIndex')) || -1;
+    var editTask;
+    editTask = (JSON.parse(localStorage.getItem('preTasks'))[index] ||
+        [{text:'タスク名', limit:'yyyy/mm/dd', expectTime:0, didTimes:[0], editDates:['']}]);
 
-    document.getElementById('task-text').value = exListPre.text;
-    document.getElementById('task-time-did') = exListPre.didTimes[exListPre.didTimes.length -1];
-    document.getElementById('task-time-expect') = exListPre.expectTime;
-    document.getElementById('task-limit') = exListPre.limit;
+    document.getElementById('task-text').value = editTask.text;
+    document.getElementById('task-time-did').value = editTask.didTimes[exListPre.didTimes.length -1];
+    document.getElementById('task-time-expect').value = editTask.expectTime;
+    document.getElementById('task-limit').value = editTask.limit;
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadLocalStorage();
+
+    document.getElementById('moveButton').addEventListener("click", () => {
+        var taskList = JSON.parse(localStorage.getItem('preTasks')) || [];
+        var taskElements = {text:'', limit:'', expectTime:0, didTimes:[0], editDates:['']};
+        var index = JSON.parse(localStorage.getItem('editIndex')) || -1;
+        taskElements.text = document.getElementById('task-text').value;
+        taskElements.limit = document.getElementById('task-limit').value;
+        taskElements.expectTime = document.getElementById('task-time-expect').value;
+        taskElements.didTimes.push(document.getElementById('task-time-did').value);
+    
+        var today = new Date();
+        var dayStr = today.getFullYear() + '/' + today.getMonth() + '/' + today.getDate()
+        taskElements.editDates.push(dayStr);
+        if(index != -1){
+            taskList.splice(index, 1)
+        }
+        taskList.push(taskElements)
+        localStorage.setItem('preTasks', JSON.stringify(taskList));
+        window.location.href = 'taskprefinish.html';
+    });
 });

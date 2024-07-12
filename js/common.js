@@ -22,16 +22,42 @@ window.addEventListener('load', function () {
     });
 
 /*id=
-    remain-time 全課題残り時間
-
     user-icon-header アイコン
-    
+
+    remain-time 全課題残り時間
 */
 
-document.addEventListener('DOMContentLoaded', () => {
+const loadLocalStorage = () => {
     const userIcon = document.getElementById('user-icon-header');
     const remainTimesAmount = document.getElementById('remain-time-footer');
     
-    userIcon.src = 'images/profile-image/sampleIcon.jpg';
-    remainTimesAmount.textContent = '4545';
+
+    var preTasks;
+    var postTasks;
+    var profile;
+    var pinned;
+    var emptyTask = [{expectTime:0, didTimes:[0]}];
+    var emptyProfile = {icon:'images/profile-image/sampleIcon.jpg'};
+    const loadJSON = () => {
+        preTasks = JSON.parse(localStorage.getItem('preTasks')) || emptyTask;
+        profile = JSON.parse(localStorage.getItem('profile')) || emptyProfile;
+    };
+
+    loadJSON();
+
+    userIcon.src = profile.icon;
+
+    var remainTime = 0;
+    preTasks.forEach(task => {
+        remainTime += task.expectTime - task.didTimes[task.didTimes.length -1];
+    });
+    remainTimesAmount.textContent = remainTime;
+};
+
+document.addEventListener('DOMContentLoaded', () => {
+    loadLocalStorage();
+});
+
+document.addEventListener('datasSaved', () => {
+    loadLocalStorage();
 });
