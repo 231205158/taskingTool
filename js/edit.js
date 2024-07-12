@@ -22,7 +22,7 @@ const loadLocalStorage = () => {
 document.addEventListener('DOMContentLoaded', () => {
     loadLocalStorage();
 
-    document.getElementById('moveButton').addEventListener("click", () => {
+    document.getElementById('registbutton').addEventListener("click", () => {
         var taskList = JSON.parse(localStorage.getItem('preTasks')) || [];
         var taskElements = {text:'', limit:'', expectTime:0, didTimes:[0], editDates:['']};
         var index = JSON.parse(localStorage.getItem('editIndex')) || -1;
