@@ -1,68 +1,76 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>プロフィール</title>
-        <meta name="description" content="プロフィール">
-        <meta name="viewport" content="width=device-width">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <link href="css/common.css" rel="stylesheet">
-        <link href="css/profile.css" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
-        <script src="js/common.js"></script>
-        <script src="js/profile.js"></script>
-    </head>
-    <body>
-        <!--header ここから-->
-        <header class="header">
-            <div class="header-inner">
-                <a class="header-logo" href="index.html">
-                    <img src="images/common/sitelogo.png" alt="ロゴ">
-                </a>
-                <button class="toggle-menu-button"></button>
-                <div class="header-site-menu">
-                    <nav class="site-menu">
-                        <ul class="header-info">
-                            <li><a href="taskprefinish.html">タスク管理</a></li>
-                            <li><a href="profile.html"><img id="user-icon-header" src="" alt="User Icon Header"></a></li>
-                        </ul>
-                    </nav>
+
+<head>
+    <meta charset="UTF-8">
+    <title>プロフィール</title>
+    <meta name="description" content="プロフィール">
+    <meta name="viewport" content="width=device-width">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/profile.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
+    <script src="js/common.js"></script>
+    <script src="js/profile.js"></script>
+</head>
+
+<body>
+    <!--header ここから-->
+    <header class="header">
+        <div class="header-inner">
+            <a class="header-logo" href="index.html">
+                <img src="images/common/sitelogo.png" alt="ロゴ">
+            </a>
+            <button class="toggle-menu-button"></button>
+            <div class="header-site-menu">
+                <nav class="site-menu">
+                    <ul class="header-info">
+                        <li><a href="taskprefinish.html">タスク管理</a></li>
+                        <li><a href="profile.html"><img id="user-icon-header" src="" alt="User Icon Header"></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <!--header ここまで-->
+    <!--main ここから-->
+    <main class="main">
+        <div class="first-view">
+            <div class="first-view-text">
+                <!---必要要素のみ表示できるよう更新20240628-->
+                <h1>ユーザー情報</h1>
+            </div>
+        </div>
+        <div class="user-info">
+            <div class="profile">
+                <div class="pro-icon"><img id="user-icon" src="" alt="User Icon"></div>
+                <div class="item-name"> ユーザー名: <div id="user-name"></div>
                 </div>
             </div>
-        </header>
-        <!--header ここまで-->
-        <!--main ここから-->
-        <main class="main">
-            <div class="first-view">
-                <div class="first-view-text">
-                    <!---必要要素のみ表示できるよう更新20240628-->
-                    <h1>ユーザー情報</h1>
-                </div>
+            <div class="task-cir">
+                <h1>達成状況</h1>
+                <h2>累計</h2>
+                <p>合計勉強時間：<span id="did-time"></span>分</p>
+                <p>合計課題完了数：<span id="did-number"></span></p>
+                <p>未完了課題時間：<span id="remain-time"></span>分</p>
+                <p>未完了課題数：<span id="remain-number"></span></p>
             </div>
-            <div class="element">
-                ユーザー名: <div id="user-name"></div>
-                    <div>アイコン: <img id="user-icon" src="" alt="User Icon"></div>
-                    <h1>達成状況</h1>
-                    <h2>累計</h2>
-                    <p>合計勉強時間：<span id="did-time"></span>分</p>
-                    <p>合計課題完了数：<span id="did-number"></span></p>
-                    <p>未完了課題時間：<span id="remain-time"></span>分</p>
-                    <p>未完了課題数：<span id="remain-number"></span></p>
-            </div>
-        </main>
-        <!--main ここまで-->
-        <!--fotter ここから-->
-        <footer class="footer">
-            <nav class="site-menu">
-                <ul>
-                    <li><a href="taskprefinish.html">タスク管理</a></li>
-                    <li><a href="profile.html">プロフィール</a></li>
-                </ul>
-            </nav>
-            <a class="copyright" href="member.html"><small>&copy;研究開発リテラシーG18</small></a>
-        </footer>
-        <!--fotter ここまで-->
-    </body>
+        </div>
+    </main>
+    <!--main ここまで-->
+    <!--fotter ここから-->
+    <footer class="footer">
+        <nav class="site-menu">
+            <ul>
+                <li><a href="taskprefinish.html">タスク管理</a></li>
+                <li><a href="profile.html">プロフィール</a></li>
+            </ul>
+        </nav>
+        <a class="copyright" href="member.html"><small>&copy;研究開発リテラシーG18</small></a>
+    </footer>
+    <!--fotter ここまで-->
+</body>
+
 </html>
