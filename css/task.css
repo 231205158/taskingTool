@@ -72,3 +72,22 @@ thead > tr > th{
     border-bottom: 2px solid #000000;
 }
 
+#task-list-pre{
+    text-align: center;
+}
+.task-text{
+    margin-right: 10px;
+    font-weight: bold;
+}
+.task-limit{
+    margin-right: 10px;
+}
+.task-time-expect{
+    margin-right: 10px;
+}
+.task-time-remain{
+    margin-right: 10px;
+}
+.task-time-did{
+    margin-right: 10px;
+}
