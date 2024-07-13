@@ -54,11 +54,12 @@ table{
 
 tbody{
     list-style: none;
+    align-items: center;
 }
 
 th, td{
     border: 1px solid #bbb;
-    text-align: left;
+    text-align: center;
     padding: 10px;
 
 }
