@@ -28,19 +28,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const earlyTask = document.getElementById('task-early');
     const finished2Tasks = document.getElementById('task-list-post-near');
     
-    var preTasks;
-    var postTasks;
-    var profile;
-    var pinned;
     var emptyTask = {text:'------', limit:'------', expectTime:0, didTimes:[0], editDates:['------']};
     var emptyProfile = {icon:'images/profile-image/sampleIcon.jpg', name:'仮野 名城'};
-    preTasks = JSON.parse(localStorage.getItem('preTasks')) || [emptyTask];
-    postTasks = JSON.parse(localStorage.getItem('postTasks')) || [];
+    var preTasks = JSON.parse(localStorage.getItem('preTasks')) || [emptyTask];
+    var postTasks = JSON.parse(localStorage.getItem('postTasks')) || [];
     while(postTasks.length < 2){
         postTasks.push(emptyTask);
     };
-    profile = JSON.parse(localStorage.getItem('profile')) || emptyProfile;
-    pinned = JSON.parse(localStorage.getItem('pinnedTask')) || 0;
+    var profile = JSON.parse(localStorage.getItem('profile')) || emptyProfile;
+    var pinned = JSON.parse(localStorage.getItem('pinnedTask')) || 0;
 
     // 特定のタスクを指定された要素に表示する関数
     const displayTaskInElement = (taskList, constName, index) => {
@@ -94,12 +90,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     var i = 0;
     var maxTime = {time:0, index:0}; 
-    preTasks.forEach(task => {
-        if(maxTime < task.expectTime){
+    preTasks.forEach((task, i) => {
+        if(maxTime.time < task.expectTime){
             maxTime.time = task.expectTime;
             maxTime.index = i;
         };
-        i++;
     });
     displayTaskInElement(preTasks, longTask, maxTime.index);
 
@@ -113,8 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 earliestDate.index = index;
             }
         });
-    }else{
-        earliestDate.date = new Date('------');
     }
     displayTaskInElement(preTasks, earlyTask, earliestDate.index);
 

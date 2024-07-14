@@ -46,12 +46,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 localStorage.setItem('preTasks', JSON.stringify(preTasks));
                 window.location.href = 'taskprefinish.html';
             }else{
-                var postTasks = JSON.parse(localStorage.getItem('ppstTasks')) || [];
+                var postTasks = JSON.parse(localStorage.getItem('postTasks')) || [];
                 postTasks.push(taskElements);
                 localStorage.setItem('postTasks', JSON.stringify(postTasks));
                 localStorage.setItem('preTasks', JSON.stringify(preTasks));
                 window.location.href = 'taskfinish.html';
             };
+        };
+    });
+    
+    document.getElementById('pinregistbutton').addEventListener("click", () => {
+        var pinIndex = JSON.parse(localStorage.getItem('pinnedTask')) ?? -1;
+        if (pinIndex >= 0) {
+            localStorage.setItem('pinnedTask', JSON.stringify(index));
+        }else{
+            localStorage.removeItem('pinnedTask');
         };
     });
 });
