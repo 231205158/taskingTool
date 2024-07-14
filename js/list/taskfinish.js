@@ -39,11 +39,16 @@ document.addEventListener('DOMContentLoaded', () => {
         taskDidTimeElement.className = 'task-time-did';
         taskDidTimeElement.textContent = task.didTimes[task.didTimes.length -1];
 
+        const taskFinishDateElement = document.createElement('span');
+        taskFinishDateElement.className = 'task-complete-date';
+        taskFinishDateElement.textContent = task.editDates[task.editDates -1];
+
         li.appendChild(taskTextElement);
         li.appendChild(taskLimitElement);
         li.appendChild(taskExpectTimeElement);
         li.appendChild(taskRemainTimeElement);
         li.appendChild(taskDidTimeElement);
+        li.appendChild(taskFinishDateElement);
 
         taskListPost.appendChild(li);
     });
