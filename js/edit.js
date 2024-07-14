@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if((isPin)){
                     localStorage.setItem('pinnedTask', JSON.stringify(preTasks.length -1));
                 }else{
-                    if (pinIndex > index){
+                    if ((pinIndex > index)&&(index !== -1)){
                         localStorage.setItem('pinnedTask', JSON.stringify(pinIndex -1));
                     };
                     if (pinIndex == index){
@@ -67,15 +67,17 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.setItem('pinnedTask', JSON.stringify(pinIndex -1));
                 };
                 if (pinIndex == index){
-                    if (pinIndex == 0){
-                        localStorage.removeItem('pinnedTask');
-                    }else {
+                    if (pinIndex != 0){
                         localStorage.setItem('pinnedTask', JSON.stringify(preTasks.length -1));
                     }
                 };
                 if (preTasks.length == 0){
                     localStorage.removeItem('preTasks');
                 }
+                if(index == 0){
+                    localStorage.removeItem('pinnedTasks');
+                }
+                localStorage.removeItem('pinnedTask');
                 window.location.href = 'taskfinish.html';
             };
         };
