@@ -55,12 +55,12 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     });
     
-    document.getElementById('pinregistbutton').addEventListener("click", () => {
+    document.getElementById('pinbutton').addEventListener("click", () => {
         var pinIndex = JSON.parse(localStorage.getItem('pinnedTask')) ?? -1;
-        if (pinIndex >= 0) {
-            localStorage.setItem('pinnedTask', JSON.stringify(index));
-        }else{
+        if ((pinIndex >= 0)||pinIndex == index) {
             localStorage.removeItem('pinnedTask');
+        }else{
+            localStorage.setItem('pinnedTask', JSON.stringify(index));
         };
     });
 });
