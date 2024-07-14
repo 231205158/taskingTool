@@ -8,7 +8,7 @@ nav.floating {
 }
 
 .first-view {
-    height: calc(100vh - 110px);
+    height: calc(100vh - 600px);
     background: linear-gradient(to right ,aqua, pink);
     display: flex;
     align-items: center;
