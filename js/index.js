@@ -119,11 +119,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const taskTextElement = document.createElement('span');
         taskTextElement.className = 'task-text';
         taskTextElement.textContent = '名' + task.text;
+        if(task.limit == '------'){
+            taskTextElement.textContent = '';
+        }
 
         const taskCompleteDateElement = document.createElement('span');
         taskCompleteDateElement.className = 'task-completeDate';
         taskCompleteDateElement.textContent = '終' + task.editDates[task.editDates.length -1];
-        
+        if(task.limit == '------'){
+            taskCompleteDateElement.textContent = '';
+        }
+
         const taskDidTimeElement = document.createElement('span');
         taskDidTimeElement.className = 'task-time-did';
         taskDidTimeElement.textContent = '経過' + task.didTimes.reduce((a, b) => a + b, 0);
