@@ -28,8 +28,8 @@ nav.floating {
 
 .first-view-text h1 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 56px;
-    line-height: 72px;
+    font-size: 40px;
+    line-height: 55px;
 }
 
 .first-view-text p {
@@ -43,7 +43,7 @@ nav.floating {
 }
 
 .user-info{
-    margin-left: 10%;
+    margin-left: 5%;
     display: flex;
     padding-top: 1%;
     padding-bottom: 1%;
@@ -63,8 +63,14 @@ nav.floating {
     border-radius: 50%;
 }
 .task-cir{
-    padding-left: 1%;
+    padding-left: 2%;
+    width: 500px;
 }
+
+.task-cir h1{
+    font-size: 30px;
+}
+
 .task-cir > h2{
     padding-top: 3%;
 }
@@ -75,6 +81,7 @@ nav.floating {
 .button{
     margin-left: 1%;
     margin-bottom: 1%;
+    margin-top: 1%;
     padding: 10px;
     color: #fff;
     border-radius: 5px;
@@ -84,7 +91,9 @@ nav.floating {
 }
 
 input[type=text]{
+    margin-top: 1%;
     padding: 10px;
+    width: 120px;
     border: 1px solid #ddd;
     border-radius: 5px;
 }

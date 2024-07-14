@@ -30,6 +30,7 @@ nav.floating {
 }
 .profile-contsnts h1,.profile-contsnts h2{
     padding-top: 1%;
+    font-size: 30px;
 }
 
 .pro-info{
@@ -87,8 +88,8 @@ nav.floating {
 
 .first-view-text h1 {
     font-family: 'Montserrat', sans-serif;
-    font-size: 56px;
-    line-height: 72px;
+    font-size: 40px;
+    line-height: 55px;
 }
 
 .first-view-text p {
