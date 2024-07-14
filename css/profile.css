@@ -82,3 +82,9 @@ nav.floating {
     border: none;
     background-color: rgb(44, 64, 212);
 }
+
+input[type=text]{
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
