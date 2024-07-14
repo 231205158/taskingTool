@@ -85,7 +85,20 @@ thead > tr > th{
     padding: 5px; 
     border-bottom: 1px solid #ddd;
 }
+#task-list-post {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
 
+#task-list-post li {
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    margin-bottom: 10px; 
+    padding: 5px; 
+    border-bottom: 1px solid #ddd;
+}
 .task-text {
     flex: 1; 
     font-weight: bold;
@@ -106,24 +119,3 @@ thead > tr > th{
 .task-time-did {
     flex: 1;
 }
-
-/*
-#task-list-pre{
-    text-align: center;
-}
-.task-text{
-    margin-right: 10px;
-    font-weight: bold;
-}
-.task-limit{
-    margin-right: 10px;
-}
-.task-time-expect{
-    margin-right: 10px;
-}
-.task-time-remain{
-    margin-right: 10px;
-}
-.task-time-did{
-    margin-right: 10px;
-}*/
