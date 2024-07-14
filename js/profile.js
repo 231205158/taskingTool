@@ -7,7 +7,7 @@
     remain-number 全課題残り数
 */
 
-const loadLocalStorageForProfile = () => {
+document.addEventListener('DOMContentLoaded', () => {
     const userIcon = document.getElementById('user-icon');
     const userName = document.getElementById('user-name');
     const didTime = document.getElementById('did-time');
@@ -19,11 +19,10 @@ const loadLocalStorageForProfile = () => {
     var postTasks;
     var profile;
     var pinned;
-    var emptyTask = [{text:'新規タスク', limit:'', expectTime:0, didTimes:[0], editDates:['']}];
     var emptyProfile = {icon:'images/profile-image/sampleIcon.jpg', name:'仮野 名城'};
     const loadJSON = () => {
-        preTasks = JSON.parse(localStorage.getItem('preTasks')) || emptyTask;
-        postTasks = JSON.parse(localStorage.getItem('preTasks')) || emptyTask;
+        preTasks = JSON.parse(localStorage.getItem('preTasks')) || [{expectTime:0, didTimes:[0]}];
+        postTasks = JSON.parse(localStorage.getItem('preTasks')) || [];
         profile = JSON.parse(localStorage.getItem('profile')) || emptyProfile;
         pinned = localStorage.getItem('pinnedTask') || 0;
     };
@@ -46,13 +45,14 @@ const loadLocalStorageForProfile = () => {
     });
     remainTimesAmount.textContent = remainTime;
 
-    remainTasksAmount.textContent = preTasks.length;
-};
-
-document.addEventListener('DOMContentLoaded', () => {
-    loadLocalStorageForProfile();
-});
-
-document.addEventListener('dataMade', () => {
-    loadLocalStorageForProfile();
+    if (preTasks.text){
+        remainTasksAmount.textContent = preTasks.length;
+    }else{
+        remainTasksAmount.textContent = 0;
+    }
+    
+    document.getElementById('resetbutton').addEventListener("click", () => {
+        localStorage.clear();
+        window.location.href = 'index.html';
+    });
 });

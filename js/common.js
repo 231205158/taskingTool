@@ -27,7 +27,7 @@ window.addEventListener('load', function () {
     remain-time 全課題残り時間
 */
 
-const loadLocalStorageForCommon = () => {
+document.addEventListener('DOMContentLoaded', () => {
     const userIcon = document.getElementById('user-icon-header');
     const remainTimesAmount = document.getElementById('remain-time-footer');
     
@@ -36,12 +36,8 @@ const loadLocalStorageForCommon = () => {
     var profile;
     var emptyTask = [{expectTime:0, didTimes:[0]}];
     var emptyProfile = {icon:'images/profile-image/sampleIcon.jpg'};
-    const loadJSON = () => {
-        preTasks = JSON.parse(localStorage.getItem('preTasks')) || emptyTask;
-        profile = JSON.parse(localStorage.getItem('profile')) || emptyProfile;
-    };
-
-    loadJSON();
+    preTasks = JSON.parse(localStorage.getItem('preTasks')) || emptyTask;
+    profile = JSON.parse(localStorage.getItem('profile')) || emptyProfile;
 
     userIcon.src = profile.icon;
 
@@ -50,9 +46,4 @@ const loadLocalStorageForCommon = () => {
         remainTime += task.expectTime - task.didTimes[task.didTimes.length -1];
     });
     remainTimesAmount.textContent = remainTime;
-
-};
-
-document.addEventListener('DOMContentLoaded', () => {
-    loadLocalStorageForCommon();
 });

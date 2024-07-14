@@ -8,17 +8,13 @@
         task-complete-date 完了日
 */
 
-const loadLocalStorageForTaskListFin = () => {
+document.addEventListener('DOMContentLoaded', () => {
     const taskListPost = document.getElementById('task-list-post');
 
     var postTasks;
     var emptyTask = [{text:'------', limit:'', expectTime:0, didTimes:[0], editDates:['']}];
-    const loadJSON = () => {
-        postTasks = JSON.parse(localStorage.getItem('postTasks')) || emptyTask;
-    };
+    postTasks = JSON.parse(localStorage.getItem('postTasks')) || emptyTask;
 
-    loadJSON();
-    
     taskListPost.innerHTML = '';
     postTasks.forEach(task => {
         const li = document.createElement('li');
@@ -51,8 +47,4 @@ const loadLocalStorageForTaskListFin = () => {
 
         taskListPost.appendChild(li);
     });
-};
-
-document.addEventListener('DOMContentLoaded', () => {
-    loadLocalStorageForTaskListFin();
 });

@@ -19,7 +19,7 @@
     task-list-post-near 完了済みの課題最新二つのリスト
 */
 
-const loadLocalStorageForIndex = () => {
+document.addEventListener('DOMContentLoaded', () => {
     const userName = document.getElementById('user-name');
     const userIcon = document.getElementById('user-icon');
     const pinnedTask = document.getElementById('task-pinned');
@@ -32,16 +32,15 @@ const loadLocalStorageForIndex = () => {
     var postTasks;
     var profile;
     var pinned;
-    var emptyTask = [{text:'新規タスク', limit:'', expectTime:0, didTimes:[0], editDates:['']}];
+    var emptyTask = {text:'------', limit:'----/--/--', expectTime:0, didTimes:[0], editDates:['2000/1/1']};
     var emptyProfile = {icon:'images/profile-image/sampleIcon.jpg', name:'仮野 名城'};
-    const loadJSON = () => {
-        preTasks = JSON.parse(localStorage.getItem('preTasks')) || emptyTask;
-        postTasks = JSON.parse(localStorage.getItem('preTasks')) || emptyTask;
-        profile = JSON.parse(localStorage.getItem('profile')) || emptyProfile;
-        pinned = localStorage.getItem('pinnedTask') || 0;
+    preTasks = JSON.parse(localStorage.getItem('preTasks')) || [emptyTask];
+    postTasks = JSON.parse(localStorage.getItem('postTasks')) || [];
+    while(postTasks.length < 2){
+        postTasks.push();
     };
-
-    loadJSON();
+    profile = JSON.parse(localStorage.getItem('profile')) || emptyProfile;
+    pinned = localStorage.getItem('pinnedTask') || 0;
 
     // 特定のタスクを指定された要素に表示する関数
     const displayTaskInElement = (task, constName) => {
@@ -79,7 +78,7 @@ const loadLocalStorageForIndex = () => {
     userIcon.src = profile.icon;
     userName.textContent = profile.name;
     
-    displayTaskInElement(exListPre[pinned], 'task-pinned', pinnedTask);
+    displayTaskInElement(preTasks[pinned], 'task-pinned', pinnedTask);
 
     remainTasksAmount.textContent = preTasks.length;
 
@@ -92,7 +91,7 @@ const loadLocalStorageForIndex = () => {
         };
         i++;
     });
-    displayTaskInElement(exListPre[maxTime.index], 'task-long', longTask);
+    displayTaskInElement(preTasks[maxTime.index], 'task-long', longTask);
 
     var i = 0;
     var earliestDate = {date:new Date(), index:0};
@@ -104,8 +103,8 @@ const loadLocalStorageForIndex = () => {
         };
         i++;
     });
-    displayTaskInElement(exListPre[maxTime.index], 'task-early', earlyTask);
-    
+    displayTaskInElement(preTasks[earliestDate.index], 'task-early', earlyTask);
+
     finished2Tasks.innerHTML = '';
     postTasks.slice(-2).forEach(task => {
         const li = document.createElement('li');
@@ -128,8 +127,4 @@ const loadLocalStorageForIndex = () => {
 
         finished2Tasks.appendChild(li);
     });
-};
-
-document.addEventListener('DOMContentLoaded', () => {
-    loadLocalStorageForIndex();
 });

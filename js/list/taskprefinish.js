@@ -8,16 +8,12 @@
         task-complete-date 完了日
 */
 
-const loadLocalStorageForTaskListPre = () => {
+document.addEventListener('DOMContentLoaded', () => {
     const taskListPre = document.getElementById('task-list-pre');
 
     var preTasks;
     var emptyTask = [{text:'------', limit:'', expectTime:0, didTimes:[0], editDates:['']}];
-    const loadJSON = () => {
-        preTasks = JSON.parse(localStorage.getItem('preTasks')) || emptyTask;
-    };
-
-    loadJSON();
+    preTasks = JSON.parse(localStorage.getItem('preTasks')) || emptyTask;
 
     taskListPre.innerHTML = '';
     preTasks.forEach(task => {
@@ -51,8 +47,4 @@ const loadLocalStorageForTaskListPre = () => {
 
         taskListPre.appendChild(li);
     });
-};
-
-document.addEventListener('DOMContentLoaded', () => {
-    loadLocalStorageForTaskListPre();
 });

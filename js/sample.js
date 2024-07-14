@@ -38,14 +38,10 @@ const loadLocalStorage = () => {
     var pinned;
     var emptyTask = [{text:'新規タスク', limit:'', expectTime:0, didTimes:[0], editDates:['']}];
     var emptyProfile = {icon:'images/profile-image/sampleIcon.jpg', name:'仮野 名城'};
-    const loadJSON = () => {
         preTasks = JSON.parse(localStorage.getItem('preTasks')) || emptyTask;
         postTasks = JSON.parse(localStorage.getItem('preTasks')) || emptyTask;
         profile = JSON.parse(localStorage.getItem('profile')) || emptyProfile;
         pinned = localStorage.getItem('pinnedTask') || 0;
-    };
-
-    loadJSON();
 
     // 特定のタスクを指定された要素に表示する関数
     const displayTaskInElement = (task, constName) => {
