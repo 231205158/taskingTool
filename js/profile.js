@@ -9,7 +9,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     const userIcon = document.getElementById('user-icon');
-    const userName = document.getElementById('user-name');
     const didTime = document.getElementById('did-time');
     const didNumber = document.getElementById('did-number');
     const remainTimesAmount = document.getElementById('remain-time');
@@ -44,12 +43,19 @@ document.addEventListener('DOMContentLoaded', () => {
             reader.onload = (e) => {
                 profile.icon = e.target.result;
                 localStorage.setItem('profile', JSON.stringify(profile));
+                window.location.href = 'profile.html';
             }
             reader.readAsDataURL(file);
         };
     });
+
+    document.getElementById('user-name').value = profile.name;
     
-    userName.textContent = profile.name;
+    document.getElementById('renamebutton').addEventListener("click", () => {
+        profile.name = document.getElementById('user-name').value;
+        localStorage.setItem('profile', JSON.stringify(profile));
+        window.location.href = 'profile.html';
+    });
 
     var didAmount = 0;
     preTasks.forEach(task => {
