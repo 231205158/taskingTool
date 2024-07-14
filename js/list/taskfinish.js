@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const taskFinishDateElement = document.createElement('span');
         taskFinishDateElement.className = 'task-complete-date';
-        taskFinishDateElement.textContent = task.editDates[task.editDates -1];
+        taskFinishDateElement.textContent = task.editDates[task.editDates.length -1];
 
         li.appendChild(taskTextElement);
         li.appendChild(taskLimitElement);
