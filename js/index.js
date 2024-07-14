@@ -30,13 +30,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
     var emptyTask = {text:'------', limit:'------', expectTime:0, didTimes:[0], editDates:['------']};
     var emptyProfile = {icon:'images/profile-image/sampleIcon.jpg', name:'仮野 名城'};
-    var preTasks = JSON.parse(localStorage.getItem('preTasks')) || [emptyTask];
+    var preTasks = JSON.parse(localStorage.getItem('preTasks'))||[emptyTask];
     var postTasks = JSON.parse(localStorage.getItem('postTasks')) || [];
     while(postTasks.length < 2){
         postTasks.push(emptyTask);
     };
     var profile = JSON.parse(localStorage.getItem('profile')) || emptyProfile;
-    var pinned = JSON.parse(localStorage.getItem('pinnedTask')) || (preTasks.length - 1);
+    var pinned = JSON.parse(localStorage.getItem('pinnedTask')) ?? (preTasks.length - 1);
     localStorage.setItem('pinnedTask', JSON.stringify(pinned));
 
     // 特定のタスクを指定された要素に表示する関数
@@ -127,6 +127,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const taskDidTimeElement = document.createElement('span');
         taskDidTimeElement.className = 'task-time-did';
         taskDidTimeElement.textContent = task.didTimes.reduce((a, b) => a + b, 0);
+        if(task.limit == '------'){
+            taskDidTimeElement.textContent = '';
+        }
 
         li.appendChild(taskTextElement);
         li.appendChild(taskCompleteDateElement);

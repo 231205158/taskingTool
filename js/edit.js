@@ -27,10 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         if (index >= 0){
-            taskElements.didTimes = preTasks[index].didTimes;
-            taskElements.editDates = preTasks[index].editDates;
+            taskElements.didTimes = editTask.didTimes;
+            taskElements.editDates = editTask.editDates;
         }
-        var isChange = ((index >= 0)&&((taskElements !== preTasks[index])||
+        var isChange = ((index >= 0)&&((taskElements !== editTask)||
             (taskElements.didTimes[taskElements.didTimes.length -1] !== parseInt(document.getElementById('task-time-did').value, 10)))||
             ((index === -1)&&(taskElements.text !== 'タスク名')&&(taskElements.limit !== '')&&(taskElements.expectTime !== 0)));
 
@@ -67,8 +67,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     localStorage.setItem('pinnedTask', JSON.stringify(pinIndex -1));
                 };
                 if (pinIndex == index){
-                    localStorage.setItem('pinnedTask', JSON.stringify(preTasks.length -1));
+                    if (pinIndex == 0){
+                        localStorage.removeItem('pinnedTask');
+                    }else {
+                        localStorage.setItem('pinnedTask', JSON.stringify(preTasks.length -1));
+                    }
                 };
+                if (preTasks.length == 0){
+                    localStorage.removeItem('preTasks');
+                }
                 window.location.href = 'taskfinish.html';
             };
         };
@@ -76,33 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.getElementById('registbutton').addEventListener("click", () => {
         setTask(false);
-    
-        if (taskElements.didTimes[taskElements.didTimes.length - 1] < taskElements.expectTime){
-            preTasks.push(taskElements);
-            localStorage.setItem('preTasks', JSON.stringify(preTasks));
-            window.location.href = 'taskprefinish.html';
-        }else{
-            var postTasks = JSON.parse(localStorage.getItem('postTasks')) || [];
-            postTasks.push(taskElements);
-            localStorage.setItem('postTasks', JSON.stringify(postTasks));
-            localStorage.setItem('preTasks', JSON.stringify(preTasks));
-            window.location.href = 'taskfinish.html';
-            localStorage.removeItem('pinnedTask');
-        };
     });
     
     document.getElementById('pinbutton').addEventListener("click", () => {
-        var pinIndex = JSON.parse(localStorage.getItem('pinnedTask')) ?? -1;
-        if ((pinIndex >= 0)||pinIndex == index) {
-            localStorage.removeItem('pinnedTask');
-        }else{
-            localStorage.setItem('pinnedTask', JSON.stringify(index));
-        };
         setTask(true);
-
-        localStorage.setItem('pinnedTask', JSON.stringify(preTasks.length -1));
-        preTasks.push(taskElements);
-        localStorage.setItem('preTasks', JSON.stringify(preTasks));
-        window.location.href = 'taskprefinish.html';
     });
 });
