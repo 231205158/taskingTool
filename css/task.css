@@ -121,6 +121,10 @@ thead > tr > th{
     flex: 1;
 }
 
+.task-complete-date{
+    flex: 1;
+}
+
 /*
 #task-list-pre{
     text-align: center;
