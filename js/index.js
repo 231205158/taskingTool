@@ -47,23 +47,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const taskTextElement = document.createElement('div');
             taskTextElement.className = 'task-text';
-            taskTextElement.textContent = task.text;
+            taskTextElement.textContent = 'タスク名:' + task.text;
     
             const taskLimitElement = document.createElement('div');
             taskLimitElement.className = 'task-limit';
-            taskLimitElement.textContent = task.limit;
+            taskLimitElement.textContent = '提出締切日:' + task.limit;
     
             const taskExpectTimeElement = document.createElement('div');
             taskExpectTimeElement.className = 'task-time-expect';
-            taskExpectTimeElement.textContent = task.expectTime;
+            taskExpectTimeElement.textContent = '必要時間' + task.expectTime + '分';
             
             const taskRemainTimeElement = document.createElement('div');
             taskRemainTimeElement.className = 'task-time-remain';
-            taskRemainTimeElement.textContent = task.expectTime - task.didTimes[task.didTimes.length -1];
+            taskRemainTimeElement.textContent = '完了まで' + (task.expectTime - task.didTimes[task.didTimes.length -1]) + '分';
     
             const taskDidTimeElement = document.createElement('div');
             taskDidTimeElement.className = 'task-time-did';
-            taskDidTimeElement.textContent = task.didTimes[task.didTimes.length -1];
+            taskDidTimeElement.textContent = '経過時間' + task.didTimes[task.didTimes.length -1] + '分';
     
             constName.appendChild(taskTextElement);
             constName.appendChild(taskLimitElement);
@@ -118,15 +118,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const taskTextElement = document.createElement('span');
         taskTextElement.className = 'task-text';
-        taskTextElement.textContent = task.text;
+        taskTextElement.textContent = '名' + task.text;
 
         const taskCompleteDateElement = document.createElement('span');
         taskCompleteDateElement.className = 'task-completeDate';
-        taskCompleteDateElement.textContent = task.editDates[task.editDates.length -1];
+        taskCompleteDateElement.textContent = '終' + task.editDates[task.editDates.length -1];
         
         const taskDidTimeElement = document.createElement('span');
         taskDidTimeElement.className = 'task-time-did';
-        taskDidTimeElement.textContent = task.didTimes.reduce((a, b) => a + b, 0);
+        taskDidTimeElement.textContent = '経過' + task.didTimes.reduce((a, b) => a + b, 0);
         if(task.limit == '------'){
             taskDidTimeElement.textContent = '';
         }
