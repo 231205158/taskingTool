@@ -1,72 +1,82 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>未完了課題</title>
-        <meta name="description" content="未完了課題">
-        <meta name="viewport" content="width=device-width">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-        <link href="css/common.css" rel="stylesheet">
-        <link href="css/task.css" rel="stylesheet">
-        <link rel="icon" href="images/favicon/favicon.ico">
-        <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon-180x180.png">
-        <link rel="icon" type="image/png" sizes="256x256" href="images/favicon/android-chrome-256x256.png">
-        <link href="css/taskprefinish.css" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
-        <script src="js/common.js"></script>
-        <script src="js/list/taskprefinish.js"></script>
-    </head>
-    <body>
-        <!--header ここから-->
-        <header class="header">
-            <div class="header-inner">
-                <a class="header-logo" href="index.html">
-                    <img src="images/common/sitelogo.png" alt="ロゴ">
-                </a>
-                <button class="toggle-menu-button"></button>
-                <div class="header-site-menu">
-                    <nav class="site-menu">
-                        <ul class="header-info">
-                            <li><a href="taskprefinish.html">タスク管理</a></li>
-                            <li><a href="profile.html"><img id="user-icon-header" src="" alt="User Icon Header"></a></li>
-                        </ul>
-                    </nav>
-                </div>
+
+<head>
+    <meta charset="UTF-8">
+    <title>未完了課題</title>
+    <meta name="description" content="未完了課題">
+    <meta name="viewport" content="width=device-width, initial-scale1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <link href="css/common.css" rel="stylesheet">
+    <link href="css/task.css" rel="stylesheet">
+    <link rel="icon" href="images/favicon/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon/apple-touch-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="256x256" href="images/favicon/android-chrome-256x256.png">
+    <link href="css/taskprefinish.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap" rel="stylesheet">
+    <script src="js/common.js"></script>
+    <script src="js/list/taskprefinish.js"></script>
+</head>
+
+<body>
+    <!--header ここから-->
+    <header class="header">
+        <div class="header-inner">
+            <a class="header-logo" href="index.html">
+                <img src="images/common/sitelogo.png" alt="ロゴ">
+            </a>
+            <button class="toggle-menu-button"></button>
+            <div class="header-site-menu">
+                <nav class="site-menu">
+                    <ul class="header-info">
+                        <li><a href="taskprefinish.html">タスク管理</a></li>
+                        <li><a href="profile.html"><img id="user-icon-header" src="" alt="User Icon Header"></a></li>
+                    </ul>
+                </nav>
             </div>
-        </header>
-        <!--header ここまで-->
-        <!--main ここから-->
-        <main class="main">
-            <div class="first-view">
-                <h1>未完了課題一覧</h1>
-            </div>
-            <button class="new" onclick="location.href='edit.html'">新規登録</button>
-            <button class="done" onclick="location.href='taskfinish.html'">完了済課題</button>
-            <table>
-                <thead>
-                    <tr>
-                        <th>課題名</th>
-                        <th>提出締切日</th>
-                        <th>予想所要時間</th>
-                        <th>完了度</th>
-                    </tr>
-                </thead>
-                <tbody id="task-list-post"></tbody>
-            </table>
-        </main>
-        <!--main ここまで-->
-        <!--fotter ここから-->
-        <footer class="footer">
-            <nav class="site-menu">
-                <ul>
-                    <li><a href="taskprefinish.html">タスク管理</a></li>
-                    <li><a href="profile.html">プロフィール</a></li>
-                </ul>
-            </nav>
-            <p class="copyright" ><small>&copy;研究開発リテラシーG18</small></p>
-        </footer>
-        <!--fotter ここまで-->
-    </body>
+        </div>
+    </header>
+    <!--header ここまで-->
+    <!--main ここから-->
+    <main class="main">
+        <div class="first-view">
+            <h1>未完了課題一覧</h1>
+        </div>
+        <button class="new" onclick="location.href='edit.html'">新規登録</button>
+        <button class="done" onclick="location.href='taskfinish.html'">完了済課題</button>
+        <table>
+            <thead>
+                <tr>
+                    <th>タスク名</th>
+                    <th>提出締切日</th>
+                    <th>必要時間(分)</th>
+                    <th>完了まで(分)</th>
+                    <th>経過時間(分)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="5">
+                        <div id="task-list-pre"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </main>
+    <!--main ここまで-->
+    <!--fotter ここから-->
+    <footer class="footer">
+        <nav class="site-menu">
+            <ul>
+                <li><a href="taskprefinish.html">タスク管理</a></li>
+                <li><a href="profile.html">プロフィール</a></li>
+            </ul>
+        </nav>
+        <p class="copyright"><small>&copy;研究開発リテラシーG18</small></p>
+    </footer>
+    <!--fotter ここまで-->
+</body>
+
 </html>

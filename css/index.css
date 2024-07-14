@@ -9,7 +9,6 @@ nav.floating {
 .header-info{
     display: flex;
     align-items: center;
-    text-align: right;
 }
 .header-info img{
     width: 200px;
@@ -17,8 +16,8 @@ nav.floating {
     border-radius: 50%;
 }
 .first-view {
-    height: calc(100vh - 110px);
-    background-color:#4b2c14;
+    height: calc(100vh - 600px);
+    background: linear-gradient(to right, pink, lime);
     background-repeat: no-repeat;
     background-position: center center;
     background-size: cover;

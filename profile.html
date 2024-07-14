@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
     <head>
         <meta charset="UTF-8">
         <title>プロフィール</title>
@@ -17,6 +18,7 @@
         <script src="js/common.js"></script>
         <script src="js/profile.js"></script>
     </head>
+
     <body>
         <!--header ここから-->
         <header class="header">
@@ -44,15 +46,21 @@
                     <h1>ユーザー情報</h1>
                 </div>
             </div>
-            <div class="element">
-                ユーザー名: <div id="user-name"></div>
-                    <div>アイコン: <img id="user-icon" src="" alt="User Icon"></div>
+            <div class="user-info">
+                <div class="profile">
+                    <div class="pro-icon"><img id="user-icon" src="" alt="User Icon"></div>
+                    <div class="item-name"> ユーザー名: <div id="user-name"></div>
+                    </div>
+                </div>
+                <div class="task-cir">
                     <h1>達成状況</h1>
                     <h2>累計</h2>
                     <p>合計勉強時間：<span id="did-time"></span>分</p>
                     <p>合計課題完了数：<span id="did-number"></span></p>
                     <p>未完了課題時間：<span id="remain-time"></span>分</p>
                     <p>未完了課題数：<span id="remain-number"></span></p>
+                    <button class="button" type="button" id="resetbutton">リセット</button>
+                </div>
             </div>
         </main>
         <!--main ここまで-->
@@ -64,8 +72,9 @@
                     <li><a href="profile.html">プロフィール</a></li>
                 </ul>
             </nav>
-            <p class="copyright"><small>&copy;研究開発リテラシーG18</small></p>
+            <a class="copyright" href="member.html"><small>&copy;研究開発リテラシーG18</small></a>
         </footer>
         <!--fotter ここまで-->
     </body>
+
 </html>
