@@ -11,11 +11,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     const taskListPost = document.getElementById('task-list-post');
 
-    var postTasks;
     var emptyTask = [{text:'------', limit:'', expectTime:0, didTimes:[0], editDates:['']}];
-    postTasks = JSON.parse(localStorage.getItem('postTasks')) || emptyTask;
+    var postTasks = JSON.parse(localStorage.getItem('postTasks')) || emptyTask;
 
     taskListPost.innerHTML = '';
+    var i = 0;
     postTasks.forEach(task => {
         const li = document.createElement('li');
 

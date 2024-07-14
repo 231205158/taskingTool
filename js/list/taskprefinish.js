@@ -11,12 +11,16 @@
 document.addEventListener('DOMContentLoaded', () => {
     const taskListPre = document.getElementById('task-list-pre');
 
-    var preTasks;
-    var emptyTask = [{text:'------', limit:'', expectTime:0, didTimes:[0], editDates:['']}];
-    preTasks = JSON.parse(localStorage.getItem('preTasks')) || emptyTask;
+    var emptyTask = [{text:'------', limit:'', expectTime:0, didTimes:[0], editDates:[]}];
+    var preTasks = JSON.parse(localStorage.getItem('preTasks')) || emptyTask;
+
+    document.getElementById('taskregistbutton').addEventListener("click", () => {
+        localStorage.setItem('index', JSON.stringify(-1));
+        window.location.href = 'edit.html';
+    });
 
     taskListPre.innerHTML = '';
-    preTasks.forEach(task => {
+    preTasks.forEach((task, i) => {
         const li = document.createElement('li');
 
         const taskTextElement = document.createElement('span');
@@ -46,5 +50,10 @@ document.addEventListener('DOMContentLoaded', () => {
         li.appendChild(taskDidTimeElement);
 
         taskListPre.appendChild(li);
+
+        li.addEventListener('click', () => {
+            localStorage.setItem('index', JSON.stringify(i));
+            window.location.href = 'edit.html';
+        });
     });
 });

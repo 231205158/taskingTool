@@ -9,7 +9,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     localStorage.getItem('preTasks')
-    var index = JSON.parse(localStorage.getItem('editIndex')) ?? -1;
+    var index = JSON.parse(localStorage.getItem('index')) ?? -1;
     var preTasks = JSON.parse(localStorage.getItem('preTasks')) || [];
     var editTask = preTasks[index] || {text:'タスク名', limit:'', expectTime:0, didTimes:[0], editDates:[]};
 
@@ -49,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 var postTasks = JSON.parse(localStorage.getItem('ppstTasks')) || [];
                 postTasks.push(taskElements);
                 localStorage.setItem('postTasks', JSON.stringify(postTasks));
+                localStorage.setItem('preTasks', JSON.stringify(preTasks));
                 window.location.href = 'taskfinish.html';
             };
         };
