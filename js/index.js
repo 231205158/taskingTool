@@ -32,15 +32,15 @@ document.addEventListener('DOMContentLoaded', () => {
     var postTasks;
     var profile;
     var pinned;
-    var emptyTask = {text:'------', limit:'----/--/--', expectTime:0, didTimes:[0], editDates:['2000/1/1']};
+    var emptyTask = {text:'------', limit:'------', expectTime:0, didTimes:[0], editDates:['------']};
     var emptyProfile = {icon:'images/profile-image/sampleIcon.jpg', name:'仮野 名城'};
     preTasks = JSON.parse(localStorage.getItem('preTasks')) || [emptyTask];
     postTasks = JSON.parse(localStorage.getItem('postTasks')) || [];
     while(postTasks.length < 2){
-        postTasks.push();
+        postTasks.push(emptyTask);
     };
     profile = JSON.parse(localStorage.getItem('profile')) || emptyProfile;
-    pinned = localStorage.getItem('pinnedTask') || 0;
+    pinned = JSON.parse(localStorage.getItem('pinnedTask')) || 0;
 
     // 特定のタスクを指定された要素に表示する関数
     const displayTaskInElement = (task, constName) => {
@@ -78,9 +78,13 @@ document.addEventListener('DOMContentLoaded', () => {
     userIcon.src = profile.icon;
     userName.textContent = profile.name;
     
-    displayTaskInElement(preTasks[pinned], 'task-pinned', pinnedTask);
+    displayTaskInElement(preTasks[pinned], pinnedTask);
 
-    remainTasksAmount.textContent = preTasks.length;
+    if (preTasks[0].text !== '------'){
+        remainTasksAmount.textContent = preTasks.length;
+    }else {
+        remainTasksAmount.textContent = 0;
+    }
 
     var i = 0;
     var maxTime = {time:0, index:0}; 
@@ -91,19 +95,22 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         i++;
     });
-    displayTaskInElement(preTasks[maxTime.index], 'task-long', longTask);
+    displayTaskInElement(preTasks[maxTime.index], longTask);
 
-    var i = 0;
     var earliestDate = {date:new Date(), index:0};
-    earliestDate.date.setDate(preTasks[0].limit);
-    preTasks.slice(1).forEach(task =>{
-        if(earliestDate.date > task.limit){
-            earliestDate.date.setDate(task.limit);
-            earliestDate.index = i;
-        };
-        i++;
-    });
-    displayTaskInElement(preTasks[earliestDate.index], 'task-early', earlyTask);
+    if (preTasks[0].limit !== '------'){
+        earliestDate.date = new Date(preTasks[0].limit)
+        preTasks.forEach((task, index) =>{
+            const taskDate = new Date(task.limit);
+            if(earliestDate.date > taskDate){
+                earliestDate.date = taskDate;
+                earliestDate.index = index;
+            }
+        });
+    }else{
+        earliestDate.date = new Date('------');
+    }
+    displayTaskInElement(preTasks[earliestDate.index], earlyTask);
 
     finished2Tasks.innerHTML = '';
     postTasks.slice(-2).forEach(task => {
