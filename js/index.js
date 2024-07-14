@@ -43,8 +43,9 @@ document.addEventListener('DOMContentLoaded', () => {
     pinned = JSON.parse(localStorage.getItem('pinnedTask')) || 0;
 
     // 特定のタスクを指定された要素に表示する関数
-    const displayTaskInElement = (task, constName) => {
+    const displayTaskInElement = (taskList, constName, index) => {
         if (constName) {
+            var task = taskList[index];
             constName.innerHTML = ''; // 現在の内容をクリア
 
             const taskTextElement = document.createElement('div');
@@ -72,13 +73,18 @@ document.addEventListener('DOMContentLoaded', () => {
             constName.appendChild(taskExpectTimeElement);
             constName.appendChild(taskRemainTimeElement);
             constName.appendChild(taskDidTimeElement);
+            
+            constName.addEventListener('click', () => {
+                localStorage.setItem('index', JSON.stringify(index));
+                window.location.href = 'edit.html';
+            });
         };
     };
     
     userIcon.src = profile.icon;
     userName.textContent = profile.name;
     
-    displayTaskInElement(preTasks[pinned], pinnedTask);
+    displayTaskInElement(preTasks, pinnedTask, pinned);
 
     if (preTasks[0].text !== '------'){
         remainTasksAmount.textContent = preTasks.length;
@@ -95,7 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
         i++;
     });
-    displayTaskInElement(preTasks[maxTime.index], longTask);
+    displayTaskInElement(preTasks, longTask, maxTime.index);
 
     var earliestDate = {date:new Date(), index:0};
     if (preTasks[0].limit !== '------'){
@@ -110,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }else{
         earliestDate.date = new Date('------');
     }
-    displayTaskInElement(preTasks[earliestDate.index], earlyTask);
+    displayTaskInElement(preTasks, earlyTask, earliestDate.index);
 
     finished2Tasks.innerHTML = '';
     postTasks.slice(-2).forEach(task => {
