@@ -36,7 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
         postTasks.push(emptyTask);
     };
     var profile = JSON.parse(localStorage.getItem('profile')) || emptyProfile;
-    var pinned = JSON.parse(localStorage.getItem('pinnedTask')) || 0;
+    var pinned = JSON.parse(localStorage.getItem('pinnedTask')) || (preTasks.length - 1);
+    localStorage.setItem('pinnedTask', JSON.stringify(pinned));
 
     // 特定のタスクを指定された要素に表示する関数
     const displayTaskInElement = (taskList, constName, index) => {

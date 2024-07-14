@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('task-time-expect').value = editTask.expectTime;
     document.getElementById('task-limit').value = editTask.limit;
 
-    document.getElementById('registbutton').addEventListener("click", () => {
+    const setTask = (isPin) =>{
         var taskElements = {text:document.getElementById('task-text').value,
             limit:document.getElementById('task-limit').value,
             expectTime:parseInt(document.getElementById('task-time-expect').value, 10),
@@ -30,8 +30,10 @@ document.addEventListener('DOMContentLoaded', () => {
             taskElements.didTimes = preTasks[index].didTimes;
             taskElements.editDates = preTasks[index].editDates;
         }
-        var isChange = ((index >= 0)&&((taskElements !== preTasks[index])||(taskElements.didTimes[taskElements.didTimes.length -1] !== parseInt(document.getElementById('task-time-did').value, 10)))||
+        var isChange = ((index >= 0)&&((taskElements !== preTasks[index])||
+            (taskElements.didTimes[taskElements.didTimes.length -1] !== parseInt(document.getElementById('task-time-did').value, 10)))||
             ((index === -1)&&(taskElements.text !== 'タスク名')&&(taskElements.limit !== '')&&(taskElements.expectTime !== 0)));
+
         if (isChange){
             taskElements.didTimes.push(parseInt(document.getElementById('task-time-did').value, 10));
             var today = new Date();
@@ -40,18 +42,52 @@ document.addEventListener('DOMContentLoaded', () => {
             if(index !== -1){
                 preTasks.splice(index, 1);
             };
-    
+
+            var pinIndex = JSON.parse(localStorage.getItem('pinnedTask')) ?? -1;
             if (taskElements.didTimes[taskElements.didTimes.length - 1] < taskElements.expectTime){
                 preTasks.push(taskElements);
                 localStorage.setItem('preTasks', JSON.stringify(preTasks));
+                if((isPin)){
+                    localStorage.setItem('pinnedTask', JSON.stringify(preTasks.length -1));
+                }else{
+                    if (pinIndex > index){
+                        localStorage.setItem('pinnedTask', JSON.stringify(pinIndex -1));
+                    };
+                    if (pinIndex == index){
+                        localStorage.setItem('pinnedTask', JSON.stringify(preTasks.length -1));
+                    };
+                };
                 window.location.href = 'taskprefinish.html';
             }else{
                 var postTasks = JSON.parse(localStorage.getItem('postTasks')) || [];
                 postTasks.push(taskElements);
                 localStorage.setItem('postTasks', JSON.stringify(postTasks));
                 localStorage.setItem('preTasks', JSON.stringify(preTasks));
+                if (pinIndex > index){
+                    localStorage.setItem('pinnedTask', JSON.stringify(pinIndex -1));
+                };
+                if (pinIndex == index){
+                    localStorage.setItem('pinnedTask', JSON.stringify(preTasks.length -1));
+                };
                 window.location.href = 'taskfinish.html';
             };
+        };
+    };
+
+    document.getElementById('registbutton').addEventListener("click", () => {
+        setTask(false);
+    
+        if (taskElements.didTimes[taskElements.didTimes.length - 1] < taskElements.expectTime){
+            preTasks.push(taskElements);
+            localStorage.setItem('preTasks', JSON.stringify(preTasks));
+            window.location.href = 'taskprefinish.html';
+        }else{
+            var postTasks = JSON.parse(localStorage.getItem('postTasks')) || [];
+            postTasks.push(taskElements);
+            localStorage.setItem('postTasks', JSON.stringify(postTasks));
+            localStorage.setItem('preTasks', JSON.stringify(preTasks));
+            window.location.href = 'taskfinish.html';
+            localStorage.removeItem('pinnedTask');
         };
     });
     
@@ -62,5 +98,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }else{
             localStorage.setItem('pinnedTask', JSON.stringify(index));
         };
+        setTask(true);
+
+        localStorage.setItem('pinnedTask', JSON.stringify(preTasks.length -1));
+        preTasks.push(taskElements);
+        localStorage.setItem('preTasks', JSON.stringify(preTasks));
+        window.location.href = 'taskprefinish.html';
     });
 });
