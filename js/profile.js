@@ -61,6 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
     preTasks.forEach(task => {
         didAmount += task.didTimes[task.didTimes.length -1];
     });
+    postTasks.forEach(task => {
+        didAmount += task.didTimes[task.didTimes.length -1];
+    });
     didTime.textContent = didAmount;
 
     didNumber.textContent = postTasks.length;
