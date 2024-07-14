@@ -20,21 +20,41 @@ document.addEventListener('DOMContentLoaded', () => {
     var profile;
     var pinned;
     var emptyProfile = {icon:'images/profile-image/sampleIcon.jpg', name:'仮野 名城'};
-    const loadJSON = () => {
-        preTasks = JSON.parse(localStorage.getItem('preTasks')) || [{expectTime:0, didTimes:[0]}];
-        postTasks = JSON.parse(localStorage.getItem('preTasks')) || [];
-        profile = JSON.parse(localStorage.getItem('profile')) || emptyProfile;
-        pinned = localStorage.getItem('pinnedTask') || 0;
-    };
+    preTasks = JSON.parse(localStorage.getItem('preTasks')) || [{expectTime:0, didTimes:[0]}];
+    postTasks = JSON.parse(localStorage.getItem('preTasks')) || [];
+    profile = JSON.parse(localStorage.getItem('profile')) || emptyProfile;
+    pinned = localStorage.getItem('pinnedTask') || 0;
 
-    loadJSON();
     userIcon.src = profile.icon;
+
+    const fileInput = document.createElement('input');
+    fileInput.type = 'file';
+    fileInput.accept = 'image/*';
+    fileInput.style.display = 'none';
+    document.body.appendChild(fileInput);
+
+    userIcon.addEventListener('click', () => {
+        fileInput.click();
+    });
+
+    fileInput.addEventListener('change', (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                profile.icon = e.target.result;
+                localStorage.setItem('profile', JSON.stringify(profile));
+            }
+            reader.readAsDataURL(file);
+        };
+    });
+    
     userName.textContent = profile.name;
 
     var didAmount = 0;
     preTasks.forEach(task => {
         didAmount += task.didTimes[task.didTimes.length -1];
-    })
+    });
     didTime.textContent = didAmount;
 
     didNumber.textContent = postTasks.length;
