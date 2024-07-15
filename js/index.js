@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const userName = document.getElementById('user-name');
     const userIcon = document.getElementById('user-icon');
     const pinnedTask = document.getElementById('task-pinned');
-    const remainTasksAmount = document.getElementById('remain-number');
     const longTask = document.getElementById('task-long');
     const earlyTask = document.getElementById('task-early');
     const finished2Tasks = document.getElementById('task-list-post-near');
@@ -82,12 +81,6 @@ document.addEventListener('DOMContentLoaded', () => {
     userName.textContent = profile.name;
     
     displayTaskInElement(preTasks, pinnedTask, pinned);
-
-    if (preTasks[0].text !== '------'){
-        remainTasksAmount.textContent = preTasks.length;
-    }else {
-        remainTasksAmount.textContent = 0;
-    }
 
     var i = 0;
     var maxTime = {time:0, index:0}; 
