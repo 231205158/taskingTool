@@ -11,8 +11,9 @@ nav.floating {
     align-items: center;
 }
 .header-info img{
+    aspect-ratio: 1 /1;
     width: 200px;
-    height: auto;
+    object-fit: cover;
     border-radius: 50%;
 }
 .first-view {
@@ -40,8 +41,9 @@ nav.floating {
 }
 
 .pro-icon img{
-    width: 100%;
-    height: 100%;
+    aspect-ratio: 1 /1;
+    width: 450px;
+    object-fit: cover;
     border-radius: 50%;
 }
 
